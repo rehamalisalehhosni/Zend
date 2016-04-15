@@ -1,0 +1,18 @@
+<?php echo $this->doctype() ?>
+<html>
+<head>
+<?php echo $this->headMeta(); ?>
+<?php echo $this->headTitle() ?>
+<?php echo $this->headLink() ?>
+</head>
+	<body>
+		<?php echo $this->partial('_header.phtml'); ?>
+    	<?php echo $this->layout()->content; ?>
+
+        
+		<?php echo $this->partial('_footer.phtml'); ?>
+   
+	</body>
+</html>
+
+
