@@ -13,11 +13,7 @@
         <controllerFile controllerName="Error"/>
       </controllersDirectory>
       <formsDirectory enabled="false"/>
-      <layoutsDirectory>
-        <layoutScriptsDirectory>
-          <layoutScriptFile layoutName="layout"/>
-        </layoutScriptsDirectory>
-      </layoutsDirectory>
+      <layoutsDirectory enabled="false"/>
       <modelsDirectory/>
       <modulesDirectory enabled="false"/>
       <servicesDirectory enabled="false"/>
