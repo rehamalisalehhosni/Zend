@@ -11,10 +11,49 @@
           <actionMethod actionName="index"/>
         </controllerFile>
         <controllerFile controllerName="Error"/>
+        <controllerFile controllerName="Users">
+          <actionMethod actionName="index"/>
+        </controllerFile>
+        <controllerFile controllerName="Category">
+          <actionMethod actionName="index"/>
+        </controllerFile>
+        <controllerFile controllerName="Thread">
+          <actionMethod actionName="index"/>
+        </controllerFile>
+        <controllerFile controllerName="Message">
+          <actionMethod actionName="index"/>
+        </controllerFile>
+        <controllerFile controllerName="Admin">
+          <actionMethod actionName="index"/>
+        </controllerFile>
+        <controllerFile controllerName="ThreadReply">
+          <actionMethod actionName="index"/>
+        </controllerFile>
       </controllersDirectory>
       <formsDirectory enabled="false"/>
       <layoutsDirectory enabled="false"/>
-      <modelsDirectory/>
+      <modelsDirectory>
+        <modelFile modelName="Users"/>
+        <modelFile modelName="Category"/>
+        <modelFile modelName="SubCategory"/>
+        <modelFile modelName="Thread"/>
+        <modelFile modelName="ThreadReply"/>
+        <modelFile modelName="Message"/>
+        <modelFile modelName="UsersMapper"/>
+        <modelFile modelName="CategoryMapper"/>
+        <modelFile modelName="SubCategoryMapper"/>
+        <modelFile modelName="ThreadMapper"/>
+        <modelFile modelName="ThreadReplyMapper"/>
+        <modelFile modelName="MessageMapper"/>
+        <dbTableDirectory>
+          <dbTableFile dbTableName="Users"/>
+          <dbTableFile dbTableName="Category"/>
+          <dbTableFile dbTableName="SubCategory"/>
+          <dbTableFile dbTableName="Thread"/>
+          <dbTableFile dbTableName="ReplyThread"/>
+          <dbTableFile dbTableName="Message"/>
+        </dbTableDirectory>
+      </modelsDirectory>
       <modulesDirectory enabled="false"/>
       <servicesDirectory enabled="false"/>
       <viewsDirectory>
@@ -24,6 +63,24 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Error">
             <viewScriptFile forActionName="error"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Users">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Category">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Thread">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Message">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Admin">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="ThreadReply">
+            <viewScriptFile forActionName="index"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
