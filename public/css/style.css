@@ -1,0 +1,74 @@
+html body{
+	background-color: rgba(185, 161, 161, 0.69);
+/*	background-color: #F1E4E9;
+*/} 
+.logo img{
+	width: 140px;
+}.top_bar{
+	border: solid 3px #f2dede;
+}.bg{
+    border-top: solid 4px #B9A1A1;
+}header{
+	background: #F1E4E9;	
+    border-bottom: solid 4px #B9A1A1;
+}
+.content{
+	min-height: 500px;
+}
+footer{
+    border-top: solid 4px #B9A1A1;
+    border-bottom: solid 4px #B9A1A1;
+    background: #F1E4E9;
+}body .container-fluid{
+	padding-right: 0px;
+	padding-left: 0px;
+}.clear{
+	clear: both;
+}
+body .navbar-default .navbar-nav>.active>a,body .navbar-default .navbar-nav>.active>a:focus,body .navbar-default .navbar-nav>.active>a:hover{
+   background-color: #F1E4E9;
+}.tb th{
+ background-color: #F1E4E9;
+}body .table{
+	border-radius: 5px;
+}
+body .table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #fcf8e3;
+}
+body .table-striped>tbody>tr:nth-of-type(even) {
+    background-color: #F1E4E9;
+}.logo{
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+table-curved {
+    border-collapse: separate;
+}
+.table-curved {
+    border: solid #ccc 1px;
+    border-radius: 6px;
+    border-left:0px;
+}
+.table-curved td, .table-curved th {
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+}
+.table-curved th {
+    border-top: none;
+}
+.table-curved th:first-child {
+    border-radius: 6px 0 0 0;
+}
+.table-curved th:last-child {
+    border-radius: 0 6px 0 0;
+}
+.table-curved th:only-child{
+    border-radius: 6px 6px 0 0;
+}
+.table-curved tr:last-child td:first-child {
+    border-radius: 0 0 0 6px;
+}
+.table-curved tr:last-child td:last-child {
+    border-radius: 0 0 6px 0;
+}
