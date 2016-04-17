@@ -8,7 +8,7 @@ class Application_Form_Signup extends Zend_Form
         /* Form Elements & Other Definitions Here ... */
             /* Form Elements & Other Definitions Here ... */
         $this->setMethod('post');
- 
+
         // Add an email element
         $this->addElement('text', 'user_name', array(
             'label'      => ' user name :',
@@ -31,11 +31,12 @@ class Application_Form_Signup extends Zend_Form
             'label'      => ' user_password:',
             'class'      => 'form-control',
             'required'   => true,
-            'filters'    => array('StringTrim'),  
+            'filters'    => array('StringTrim'),
 
         ));
 		$element = new Zend_Form_Element_File('image');
 		$destination = APPLICATION_PATH."/../public/upload/user_image";
+        #var_dump($destination); exit();
 		$element->setLabel('Upload an image:')
 		        ->setDestination($destination);
 		// ensure only 1 file
@@ -63,13 +64,13 @@ class Application_Form_Signup extends Zend_Form
                 'timeout' => 300
             )
         ));
- 
+
         // Add the submit button
         $this->addElement('submit', 'submit', array(
             'ignore'   => true,
             'label'    => 'Signup',
         ));
- 
+
     }
 
 
