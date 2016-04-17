@@ -34,11 +34,18 @@ class Application_Form_Signup extends Zend_Form
             'filters'    => array('StringTrim'),  
 
         ));
-		$element = new Zend_Form_Element_File('image');
-		$destination = APPLICATION_PATH."/../public/upload/user_image";
-		$element->setLabel('Upload an image:')
-		        ->setDestination($destination);
-		// ensure only 1 file
+         $this->addElement('text', 'country', array(
+            'label'      => ' country :',
+            'class'      => 'form-control',
+            'required'   => true,
+            'filters'    => array('StringTrim'),
+
+        ));
+        $element = new Zend_Form_Element_File('image');
+        $destination = APPLICATION_PATH."/../public/upload/user_image";
+        $element->setLabel('Upload an image:')
+                ->setDestination($destination);
+        // ensure only 1 file
 		$element->addValidator('Count', false, 1);
 		// limit to 100K
 		$element->addValidator('Size', false, 10240000);

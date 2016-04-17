@@ -31,64 +31,29 @@ class UsersController extends Zend_Controller_Action
         $request = $this->getRequest();
         if ($request->isPost()) {
             if ($form->isValid($request->getPost())) {
-            	    if (!$form->image->receive()) {
+            	if (!$form->image->receive()) {
 				        print "Upload error";
-				    }
+				  }
 				 //change image   name
                 $data = $this->getRequest()->getParams();
-			    $data['image']=$form->image->getValue('name');
-			    $data['registration_date']=date('Y-m-d');
-/*                $user = new Application_Form_User($form->getValues());
-*/             /*  $this->model->addUser($data);*/
-                return $this->_helper->redirector('index');
+                $data['image']=$form->image->getValue('name');
+                $data['registration_date']=date('Y-m-d');
+                $data['last_login_date']=date('Y-m-d');
+                $data['user_type']="user";
+
+/*                $form->getValues()['registration_date']=date('Y-m-d');
+*/              $users = new Application_Model_Users($data);
+                $mapper = new Application_Model_UsersMapper();
+                $mapper->save($users);
+
+                return $this->_helper->redirector('index');    
             }
         } 
         $this->view->form = $form;
 
     }
 
-    public function loginAction()
-    {
-        // action body
-                $auth = Zend_Auth::getInstance();
-        if (!$auth->hasIdentity()) {
-
-        $request = $this->getRequest();
-        $form   = new Application_Form_Login();
-        if ($request->isPost()) {
-            if ($form->isValid($request->getPost())) {
-            	$username= $this->_request->getParam('user_email');
-				$password= $this->_request->getParam('user_password');
-				// get the default db adapter
-				$db =Zend_Db_Table::getDefaultAdapter();
-				//create the auth adapter
-				$authAdapter = new 	Zend_Auth_Adapter_DbTable($db,'users','user_email', 'user_password');
-				$authAdapter->setIdentity($username);
-				$authAdapter->setCredential(md5($password));
-				$result = $authAdapter->authenticate();
-				if ($result->isValid()) {
-					$auth =Zend_Auth::getInstance();
-					$storage = $auth->getStorage();
-					$storage->write($authAdapter->getResultRowObject(array('email
-' , 'id' , 'user_name','user_email','image')));
-                 //$this->_helper->FlashMessenger('Successful Login');
-	                return $this->_redirect('/users');
-				}else{
-				  return $this->_redirect('index');
-				}
-			}
-	    } 
-        $this->view->form = $form;
-        }else{
-            $identity = $auth->getIdentity();
-            var_dump($auth->getIdentity()->user_name);
-           return $this->_helper->redirector('index');
-        }
-
-
-
-    }
-
+ 
 
 }
 
