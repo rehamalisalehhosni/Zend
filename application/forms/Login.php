@@ -2,14 +2,13 @@
 
 class Application_Form_Login extends Zend_Form
 {
-
     public function init()
     {
         /* Form Elements & Other Definitions Here ... */
        /* Form Elements & Other Definitions Here ... */
         $this->setMethod('post');
                 // Add an email element
-        $this->addElement('text', 'user_email', array(
+        $this->addElement('text', 'email', array(
            'label'      => 'Email:',
            'required'   => true,
            'class'      => 'form-control',
@@ -18,7 +17,7 @@ class Application_Form_Login extends Zend_Form
             'EmailAddress',
                )
         ));
-        $this->addElement('password', 'user_password', array(
+        $this->addElement('password', 'password', array(
            'label'      => 'password :',
            'required'   => true,
            'class'      => 'form-control',
