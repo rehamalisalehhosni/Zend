@@ -1,0 +1,25 @@
+		<table class="table table-striped">
+    		<thead>
+      <tr>
+        <th>Uesr Name</th>
+        <th>Email</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+<?php
+	   foreach ($this->users as $user){
+		?>
+      <tr>
+
+        <td><?php echo $user->getUser_name() ?></td>
+        <td><?php echo $user->getUser_email() ?></td>
+        <td><a href="<?php echo $this->baseUrl()?>/users/editUser/id/<?php echo $user->getUser_id() ?>">Edit</a></td>
+        <td><a href="/deleteUser/id/<?php echo $user->getUser_id() ?>">Delete</a></td>
+     </tr>
+		<?php
+		}
+?>
+    </tbody>
+  </table>

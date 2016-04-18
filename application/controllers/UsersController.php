@@ -21,6 +21,7 @@ class UsersController extends Zend_Controller_Action
     public function indexAction()
     {
         // action body
+
     }
 
     public function signupAction()
@@ -53,9 +54,47 @@ class UsersController extends Zend_Controller_Action
 
     }
 
- 
+    public function listAction()
+    {
+        $mapper = new Application_Model_UsersMapper();
+        $this->view->users = $mapper->fetchAll();
+        // action body
+    }
+
+    public function editUserAction()
+    {
+        // action body
+        $request = $this->getRequest();
+        $id = $this->getRequest()->getParam('id');      
+        $form = new Application_Form_Signup();
+        $mapper = new Application_Model_UsersMapper();
+        var_dump($mapper->find($id));
+        $form->populate($mapper->find($id));
+        $form->getElement('password')->setRequired(false);
+        if ($request->isPost()) {
+
+            }
+         
+        $this->view->form = $form;         
+
+    }
+
+    public function deleteUserAction()
+    {
+        // action body
+        $id = $this->getRequest()->getParam('id');      
+    }
+
 
 }
+
+
+
+
+
+
+
+
 
 
 

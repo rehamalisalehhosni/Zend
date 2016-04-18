@@ -15,6 +15,10 @@
           <actionMethod actionName="index"/>
           <actionMethod actionName="signup"/>
           <actionMethod actionName="login"/>
+          <actionMethod actionName="userList"/>
+          <actionMethod actionName="list"/>
+          <actionMethod actionName="editUser"/>
+          <actionMethod actionName="deleteUser"/>
         </controllerFile>
         <controllerFile controllerName="Category">
           <actionMethod actionName="index"/>
@@ -119,6 +123,18 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Auth">
             <viewScriptFile forActionName="logout"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Users">
+            <viewScriptFile forActionName="userList"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Users">
+            <viewScriptFile forActionName="list"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Users">
+            <viewScriptFile forActionName="editUser"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Users">
+            <viewScriptFile forActionName="deleteUser"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>

@@ -93,7 +93,7 @@ class Application_Model_Users
  
     public function setUser_type($user_type)
     {
-        $this->_user_type = (string) $user_type;
+        $this->_user_type =  $user_type;
  
         return $this;
     }

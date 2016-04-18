@@ -7,7 +7,7 @@ class Application_Model_UsersMapper
     protected function _hydrate($row)
     {
         $user = new Application_Model_Users();
-        $user->setUser_id($row->User_id)
+        $user->setUser_id($row->user_id)
              ->setUser_password($row->user_password)
              ->setUser_name($row->user_name)
              ->setRegistration_date($row->registration_date)
@@ -15,7 +15,7 @@ class Application_Model_UsersMapper
              ->setCountry($row->country)
              ->setImage($row->image)
              ->setLast_login_date($row->last_login_date)
-             ->setLast_user_type($row->user_type);
+             ->setUser_type($row->user_type);
         return $user;
     }
  
