@@ -28,7 +28,14 @@ class Application_Model_Users
                 $this->$method($value);
             }
         }
-
+ 
+        return $this;
+    }
+ 
+    public function setUser_id($user_id)
+    {
+        $this->_user_id = (int) $user_id;
+ 
         return $this;
     }
  

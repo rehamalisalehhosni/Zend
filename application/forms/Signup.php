@@ -77,7 +77,7 @@ class Application_Form_Signup extends Zend_Form
         // Add the submit button
         $this->addElement('submit', 'submit', array(
             'ignore' => true,
-            'label' => 'Signup',
+            'label' => 'Save',
         ));
     }
 }
