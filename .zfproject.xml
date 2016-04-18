@@ -46,6 +46,8 @@
         <formFile formName="Signup"/>
         <formFile formName="Login"/>
         <formFile formName="CreateCategory"/>
+        <formFile formName="AddThread"/>
+        <formFile formName="AddReply"/>
       </formsDirectory>
       <layoutsDirectory>
         <layoutScriptsDirectory>
