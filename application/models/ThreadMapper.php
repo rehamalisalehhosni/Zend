@@ -8,7 +8,7 @@ class Application_Model_ThreadMapper
     {
         $thread = new Application_Model_Thread();
         $thread->setCategory_id($row->category_id)
-             ->setDate($row->Date)
+             ->setDate($row->date)
              ->setThread_body($row->thread_body)
              ->setThread_title($row->thread_title)
              ->setThread_id($row->thread_id)

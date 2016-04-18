@@ -4,11 +4,11 @@ class Application_Model_ThreadReply
 {
 
 
-protected date;
-protected owner_id;
-protected reply_body;
-protected reply_id;
-protected thread_id;
+protected $_date;
+protected $_owner_id;
+protected $_reply_body;
+protected $_reply_id;
+protected $_thread_id;
 
 
 public function __construct(array $options = null)
