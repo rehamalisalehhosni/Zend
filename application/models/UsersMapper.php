@@ -58,7 +58,12 @@ class Application_Model_UsersMapper
         if (null === ($user_id = $user->getUser_id())) {
             $this->getDbTable()->insert($data);
         } else {
-            $this->getDbTable()->update($data, array('user_id= ?' => $id));
+            if(empty(trim($data['image']))){
+
+/*              unset($data[$image]);
+*/              unset($data['image']);
+            }
+            $this->getDbTable()->update($data, array('user_id= ?' => $user_id));
         }
     }
  
@@ -71,6 +76,18 @@ class Application_Model_UsersMapper
         $row = $result->current();
  
         return $this->_hydrate($row);
+    } 
+    public function find_array($id)
+    {
+        $result = $this->getDbTable()->find($id)->toArray();
+
+        return $result;
+    }
+    public function remove($id)
+    {
+        $result = $this->getDbTable()->delete('user_id='.$id);
+
+        return $result;
     }
  
     public function fetchAll()

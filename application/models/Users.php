@@ -32,6 +32,14 @@ class Application_Model_Users
         return $this;
     }
  
+ #user.
+/*    public getAttributes () 
+    {
+        $attr = array(
+                    
+            )
+        return $attr;
+    }*/
     public function setUser_id($user_id)
     {
         $this->_user_id = (int) $user_id;

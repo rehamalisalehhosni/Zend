@@ -68,23 +68,49 @@ class UsersController extends Zend_Controller_Action
         $id = $this->getRequest()->getParam('id');      
         $form = new Application_Form_Signup();
         $mapper = new Application_Model_UsersMapper();
-        var_dump($mapper->find($id));
-        $form->populate($mapper->find($id));
-        $form->getElement('password')->setRequired(false);
+        $user=$mapper->find_array($id)[0];
+/*        $this->view->image=$data['image'];
+*/      $form->populate($user);
+        $form->getElement('user_password')->setRequired(false);
         if ($request->isPost()) {
-
+            if ($form->isValid($request->getPost())) {
+                    if (!$form->image->receive()) {
+                        print "Upload error";
+                           //$data['image']=$user['image'];
+                      }
+                      $data['image']=$form->image->getValue('name');
+              /*   if(!$form->user_password){
+                    $data['user_password']=md5($data['user_password']);
+                 }else{
+                    $data['user_password']=md5($user['user_password']);
+                } */
+                $data = $this->getRequest()->getParams();
+                $data['user_password']=md5($data['user_password']);
+                $data['image']=$form->image->getValue('name');
+                $data['registration_date']=$user['registration_date'];
+                $data['last_login_date']=$user['last_login_date'];
+                $data['user_type']=$user['user_type'];
+                $users = new Application_Model_Users($data);
+                $mapper = new Application_Model_UsersMapper();
+                $users->setUser_id($id);
+                $mapper->save($users);
+                return $this->_helper->redirector('index'); //idont know helper
             }
-         
+        }         
         $this->view->form = $form;         
-
     }
 
     public function deleteUserAction()
     {
         // action body
-        $id = $this->getRequest()->getParam('id');      
-    }
+   
+        $users = new Application_Model_Users();
+        $mapper = new Application_Model_UsersMapper();
+        $id = $this->getRequest()->getParam('id');  
+        $user=$mapper->remove($id);
+        return $this->_helper->redirector('index'); //idont know helper
 
+    }
 
 }
 

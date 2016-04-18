@@ -15,8 +15,8 @@
 
         <td><?php echo $user->getUser_name() ?></td>
         <td><?php echo $user->getUser_email() ?></td>
-        <td><a href="<?php echo $this->baseUrl()?>/users/editUser/id/<?php echo $user->getUser_id() ?>">Edit</a></td>
-        <td><a href="/deleteUser/id/<?php echo $user->getUser_id() ?>">Delete</a></td>
+        <td><a href="<?php echo $this->baseUrl()?>/users/edit-user/id/<?php echo $user->getUser_id() ?>">Edit</a></td>
+        <td><a href="<?php echo $this->baseUrl()?>/users/delete-user/id/<?php echo $user->getUser_id() ?>">Delete</a></td>
      </tr>
 		<?php
 		}
