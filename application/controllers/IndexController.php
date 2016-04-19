@@ -12,6 +12,11 @@ class IndexController extends Zend_Controller_Action
                 $this->view->user_name = $auth->getIdentity()->user_name;
                 $this->view->user_email = $auth->getIdentity()->user_email;
                 // Identity exists; get it
+        }else{
+                $users = new Application_Model_DbTable_Users();
+                $form2 = new Application_Form_Login();
+                $this->view->form2 = $form2;
+
         }
 
     }

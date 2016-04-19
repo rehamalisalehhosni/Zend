@@ -72,3 +72,10 @@ table-curved {
 .table-curved tr:last-child td:last-child {
     border-radius: 0 0 6px 0;
 }
+.border{
+    border:solid 1px #ccc;
+    border-radius: 5px;
+    padding:5px;
+    margin: 5px;
+    list-style: none;
+}

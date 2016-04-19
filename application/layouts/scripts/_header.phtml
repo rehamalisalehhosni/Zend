@@ -7,8 +7,15 @@
                 <div class="user_block pull-right">
                     <?php 
 
-                        echo $this->user_name;
-                        echo $this->user_email;
+                        if( $this->form2){
+                          echo $this->form2;
+                        }else{
+                            echo"<ul class='border'>";
+                            echo"<li> UserName : " .$this->user_name."</li>";
+                            echo"<li> UserEmail : " .$this->user_email."</li>";
+                            echo"<li><a href='".$this->baseUrl()."/auth/logout'> Logout </a></li>";
+                            echo"</ul>";
+                        }
                      ?>
                 </div>
             </div>

@@ -17,6 +17,7 @@ class AuthController extends Zend_Controller_Action
         $users = new Application_Model_DbTable_Users();
         $form = new Application_Form_Login();
         $this->view->form = $form;
+        
         if ($this->getRequest()->isPost()) {
             if ($form->isValid($_POST)) {
                 $data = $form->getValues();
