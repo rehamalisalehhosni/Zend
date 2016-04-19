@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 17, 2016 at 01:32 PM
+-- Generation Time: Apr 18, 2016 at 07:20 PM
 -- Server version: 5.5.47-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.14
+-- PHP Version: 5.6.20-1+deb.sury.org~trusty+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -30,6 +30,7 @@ CREATE TABLE IF NOT EXISTS `Category` (
   `category_id` int(11) NOT NULL AUTO_INCREMENT,
   `category_name` varchar(225) NOT NULL,
   `category_state` varchar(200) NOT NULL,
+  `parent` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`category_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -57,9 +58,10 @@ CREATE TABLE IF NOT EXISTS `Message` (
 
 CREATE TABLE IF NOT EXISTS `ReplyThread` (
   `reply_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
+  `owner_id` int(11) NOT NULL,
   `thread_id` int(11) NOT NULL,
-  `reply` text NOT NULL,
+  `reply_body` text NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`reply_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -79,19 +81,6 @@ CREATE TABLE IF NOT EXISTS `setting` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `SubCategory`
---
-
-CREATE TABLE IF NOT EXISTS `SubCategory` (
-  `SubCategory_id` int(11) NOT NULL AUTO_INCREMENT,
-  `category_id` int(11) NOT NULL,
-  `SubCategory` varchar(225) NOT NULL,
-  PRIMARY KEY (`SubCategory_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `Thread`
 --
 
@@ -99,9 +88,10 @@ CREATE TABLE IF NOT EXISTS `Thread` (
   `thread_id` int(11) NOT NULL AUTO_INCREMENT,
   `category_id` int(11) NOT NULL,
   `thread_state_id` int(11) NOT NULL,
-  `thread` text NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `date` date NOT NULL,
+  `thread_body` text NOT NULL,
+  `owner_id` int(11) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `thread_title` varchar(255) NOT NULL,
   PRIMARY KEY (`thread_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -135,14 +125,15 @@ CREATE TABLE IF NOT EXISTS `Users` (
   `last_login_date` date NOT NULL,
   `user_type` varchar(200) NOT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `Users`
 --
 
 INSERT INTO `Users` (`user_id`, `user_name`, `user_email`, `user_password`, `registration_date`, `gender`, `country`, `image`, `last_login_date`, `user_type`) VALUES
-(1, 'admin', 'admin@gmail.com', '8ca6342915ac81dd2d3eec49e2098db9', '2016-04-15', 'female', '1', 'YOUNGS~1.GIF', '0000-00-00', '1');
+(1, 'admin', 'admin@gmail.com', '8ca6342915ac81dd2d3eec49e2098db9', '2016-04-15', 'female', '1', 'YOUNGS~1.GIF', '0000-00-00', '1'),
+(2, 'bassem', 'b@b.com', '123', '2016-04-17', 'male', 'egypt', 'CKj6Q6yWsAA4c_G.jpg', '2016-04-17', 'user');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

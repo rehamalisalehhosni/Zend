@@ -4,13 +4,13 @@ class Application_Model_Thread
 {
 
 
-protected $_category_id;
-protected $_date;
-protected $_thread_body;
-protected $_thread_title;
-protected $_thread_id;
-protected $_thread_state_id;
-protected $_owner_id;
+protected category_id;
+protected date;
+protected thread_body;
+protected thread_title;
+protected thread_id;
+protected thread_state_id;
+protected owner_id;
 
 
 public function __construct(array $options = null)
@@ -73,7 +73,19 @@ public function __construct(array $options = null)
     {
         return $this->_thread_body;
     }
-	
+	//************************************************************************************************
+	public function setThread_body($thread_body)
+    {
+        $this->_thread_body = (string) $thread_body;
+ 
+        return $this;
+    }
+ 
+    public function getThread_body()
+    {
+        return $this->_thread_body;
+    }
+
 	//************************************************************************************************
 	
 	public function setThread_title($thread_title)
