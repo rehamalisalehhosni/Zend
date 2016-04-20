@@ -82,6 +82,21 @@ class Application_Model_UsersMapper
         $result = $this->getDbTable()->find($id)->toArray();
 
         return $result;
+    } 
+    public function userExists($email)
+    {
+        $select =  $this->getDbTable()->select()
+                       ->where('user_email' . ' =?', $email);
+
+        $row = $this->getDbTable()->fetchRow($select);
+        if(is_null($row->user_id))
+        {
+            return 0;
+        }
+        else
+        {
+           return $row->user_id;
+        }
     }
     public function remove($id)
     {

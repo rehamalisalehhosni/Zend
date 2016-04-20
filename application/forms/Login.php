@@ -7,6 +7,8 @@ class Application_Form_Login extends Zend_Form
         /* Form Elements & Other Definitions Here ... */
        /* Form Elements & Other Definitions Here ... */
         $this->setMethod('post');
+        $baseUrlHelper= new Zend_View_Helper_BaseUrl();
+        $this->setAction($baseUrlHelper->baseUrl('auth/login'));
                 // Add an email element
         $this->addElement('text', 'email', array(
            'label'      => 'Email:',

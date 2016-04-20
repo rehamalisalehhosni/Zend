@@ -12,6 +12,11 @@ class UsersController extends Zend_Controller_Action
                 $this->view->user_name = $auth->getIdentity()->user_name;
                 $this->view->user_email = $auth->getIdentity()->user_email;
                 // Identity exists; get it
+        }else{
+                $users = new Application_Model_DbTable_Users();
+                $form2 = new Application_Form_Login();
+                $this->view->form2 = $form2;
+
         }
         /* Initialize action controller here */
 /*        $this->model=new Application_Model_DbTable_Users();
@@ -31,12 +36,14 @@ class UsersController extends Zend_Controller_Action
         $form = new Application_Form_Signup();
         $request = $this->getRequest();
         if ($request->isPost()) {
-            if ($form->isValid($request->getPost())) {
-            	if (!$form->image->receive()) {
-				        print "Upload error";
-				  }
-				 //change image   name
-                $data = $this->getRequest()->getParams();
+            if ($form->isValid($request->getPost())) { 
+                $data = $this->getRequest()->getParams(); 
+
+                if (!$form->image->receive()) {
+                        print "Upload error";
+                  }
+
+                 //change image   name
                 $data['image']=$form->image->getValue('name');
                 $data['registration_date']=date('Y-m-d');
                 $data['last_login_date']=date('Y-m-d');
@@ -45,9 +52,15 @@ class UsersController extends Zend_Controller_Action
 /*                $form->getValues()['registration_date']=date('Y-m-d');
 */              $users = new Application_Model_Users($data);
                 $mapper = new Application_Model_UsersMapper();
-                $mapper->save($users);
+                if($mapper->userExists($data['user_email'])){
 
-                return $this->_helper->redirector('index');    
+                   return $this->view->error="user already exists";    
+                }else{
+                    $mapper->save($users);
+                    return $this->_helper->redirector('index');    
+                    
+                }
+
             }
         } 
         $this->view->form = $form;
