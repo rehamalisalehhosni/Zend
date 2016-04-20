@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 18, 2016 at 07:20 PM
+-- Generation Time: Apr 21, 2016 at 12:02 AM
 -- Server version: 5.5.47-0ubuntu0.14.04.1
 -- PHP Version: 5.6.20-1+deb.sury.org~trusty+1
 
@@ -29,10 +29,11 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `Category` (
   `category_id` int(11) NOT NULL AUTO_INCREMENT,
   `category_name` varchar(225) NOT NULL,
-  `category_state` varchar(200) NOT NULL,
-  `parent` int(11) NOT NULL DEFAULT '0',
+  `category_state` tinyint(1) NOT NULL DEFAULT '1',
+  `category_parent` int(11) NOT NULL DEFAULT '0',
+  `category_description` tinytext NOT NULL,
   PRIMARY KEY (`category_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 -- --------------------------------------------------------
 
