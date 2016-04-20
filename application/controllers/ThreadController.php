@@ -3,9 +3,23 @@
 class ThreadController extends Zend_Controller_Action
 {
 
+   protected $auth;
     public function init()
     {
         /* Initialize action controller here */
+        $this->auth = Zend_Auth::getInstance();
+        if ($this->auth ->hasIdentity()) {
+                $identity =  $this->auth->getIdentity();
+                $this->view->user_name =  $this->auth->getIdentity()->user_name;
+                $this->view->user_email =  $this->auth->getIdentity()->user_email;
+                // Identity exists; get it
+        }else{
+                $users = new Application_Model_DbTable_Users();
+                $form2 = new Application_Form_Login();
+                $this->view->form2 = $form2;
+
+        }
+        ///stoped loggin
     }
 
     public function indexAction()
@@ -24,13 +38,12 @@ class ThreadController extends Zend_Controller_Action
                 $data = $this->getRequest()->getParams();
                 $data['date']=date('Y-m-d');
                 $data['thread_state_id']=1; //active thread non-blocked
-$data['category_id']=1; //from category session
-$data['owner_id']=1;//from user session
+                $data['category_id']=1; //from category session
+                $data['owner_id']=$this->auth ->getIdentity()->user_id;//from user session
 /*                $form->getValues()['registration_date']=date('Y-m-d');
 */              $thread = new Application_Model_Thread($data);
                 $mapper = new Application_Model_ThreadMapper();
                 $mapper->save($thread);
-
                 return $this->_helper->redirector('index');    
             }
         } 

@@ -23,7 +23,14 @@ class IndexController extends Zend_Controller_Action
 
     public function indexAction()
     {
+
         // action body
+        $mapper = new Application_Model_CategoryMapper();
+        $this->view->cats = $mapper;
+        $mapperthraed = new Application_Model_ThreadMapper();
+        $this->view->thread = $mapperthraed;
+
+
     }
 
 

@@ -17,7 +17,6 @@ class AuthController extends Zend_Controller_Action
                 $users = new Application_Model_DbTable_Users();
                 $form2 = new Application_Form_Login();
                 $this->view->form2 = $form2;
-
         }
     }
 

@@ -101,6 +101,15 @@ class Application_Model_CategoryMapper
 
         return $entries;
     }
+    public function findChildCategory($category_parent) {
+
+        $resultSet = $this->getDbTable()->fetchAll("category_parent = $category_parent");
+        $entries = array();
+        foreach ($resultSet as $row) {
+            $entries[] = $this->_hydrate($row);
+        }
+        return $entries;
+    }
     public function remove($id)
     {
         $result = $this->getDbTable()->delete('category_id='.$id);

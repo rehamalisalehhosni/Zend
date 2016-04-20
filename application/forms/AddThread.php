@@ -13,8 +13,8 @@ class Application_Form_AddThread extends Zend_Form
         $thread_title->setlabel("Thread Title:");
         $thread_title->setAttrib("class","form-control");
         $thread_title->setAttrib("placeholder","Enter Thread Title");
-        $thread_title->addValidator(new Zend_Validate_Alpha());
-
+/*        $thread_title->addValidator(new Zend_Validate_Alpha());
+*/
 		$thread_body =  new Zend_Form_Element_Textarea('thread_body');
 		$thread_body ->setRequired();
 		$thread_body->setLabel('Enter the post');
@@ -37,7 +37,7 @@ class Application_Form_AddThread extends Zend_Form
         $this->setAttrib('enctype', 'multipart/form-data');
 		*/
 
-		$submit=new Zend_Form_Element_Submit("submit");
+		$submit=new Zend_Form_Element_Submit("ADD");
 		$submit->setValue("Add Thread");
 
 		$this->addElements(array($thread_title,$thread_body,$submit ));
