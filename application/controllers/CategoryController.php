@@ -23,7 +23,7 @@ class CategoryController extends Zend_Controller_Action
         foreach ($mainCats as $cat) {
             $parents[$cat->getCategory_id()] = $cat->getCategory_name();
         }
-    //    var_dump($mainCats); exit();
+    #    var_dump($mainCats); exit();
         $form->setParents($parents);
         $request = $this->getRequest();
         if ($request->isPost()) {
@@ -33,7 +33,7 @@ class CategoryController extends Zend_Controller_Action
                 if ($mapper->categoryExists($data['category_name'])) {
                     return $this->view->error = 'category already exists';
                 } else {
-                    //var_dump($category); exit();
+                    #var_dump($category); exit();
                     $mapper->save($category);
 
                     return $this->_helper->redirector('index');

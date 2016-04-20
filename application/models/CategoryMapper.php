@@ -10,7 +10,7 @@ class Application_Model_CategoryMapper
         $category->setCategory_id($row->category_id)
                ->setCategory_name($row->category_name)
                ->setCategory_state($row->category_state)
-               ->setParent($row->category_parent)
+               ->setCategory_Parent($row->category_parent)
                ->setCategory_description($row->category_description);
         return $category;
     }

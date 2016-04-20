@@ -23,7 +23,7 @@ class Application_Model_Category
                 $this->$method($value);
             }
         }
-
+        //var_dump($this);
         return $this;
     }
 
@@ -49,7 +49,7 @@ class Application_Model_Category
         $this->_category_state = (string) $categoryState;
         return $this;
     }
-    public function setParent($categoryParent)
+    public function setCategory_parent($categoryParent)
     {
         $this->_category_parent = (string) $categoryParent;
         return $this;
