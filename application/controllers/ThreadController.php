@@ -41,16 +41,35 @@ $data['owner_id']=1;//from user session
     public function deleteAction()
     {
         // action body
-      /*  $thread = new Application_Model_Thread();
+       $thread = new Application_Model_Thread();
         $mapper = new Application_Model_ThreadMapper();
-        $id = $this->getRequest()->getParam('thread_id');  
+        $id = $this->getRequest()->getParam('id'); 
         $thread=$mapper->remove($id);
-        return $this->_helper->redirector('delete');*/
+        return $this->_helper->redirector('delete');
     }
 
     public function editAction()
     {
         // action body
+        $request = $this->getRequest();
+        $id = $this->getRequest()->getParam('id');      
+        $form = new Application_Form_AddThread();
+        $mapper = new Application_Model_ThreadMapper();
+        $thread=$mapper->find_array($id)[0];
+/*        $this->view->image=$data['image'];
+*/      $form->populate($thread);
+        #$form->getElement('user_password')->setRequired(false);
+        if ($request->isPost()) {
+            if ($form->isValid($request->getPost())) {    
+                $data = $this->getRequest()->getParams();
+                $thread = new Application_Model_Thread($data);
+                $mapper = new Application_Model_ThreadMapper();
+                $thread->setThread_id($id);
+                $mapper->save($thread);
+               // return $this->_helper->redirector('index'); //idont know helper
+            }
+        }         
+        $this->view->form = $form;   
 
     }
 

@@ -69,6 +69,19 @@ class Application_Model_ThreadMapper
  
         return $this->_hydrate($row);
     }
+
+    public function find_array($id)
+    {
+        $result = $this->getDbTable()->find($id)->toArray();
+
+        return $result;
+    }
+    public function remove($id)
+    {
+        $result = $this->getDbTable()->delete("thread_id=".$id);
+
+        return $result;
+    }
  
     public function fetchAll()
     {
