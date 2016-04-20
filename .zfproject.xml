@@ -23,6 +23,8 @@
         <controllerFile controllerName="Category">
           <actionMethod actionName="index"/>
           <actionMethod actionName="create"/>
+          <actionMethod actionName="delete"/>
+          <actionMethod actionName="edit"/>
         </controllerFile>
         <controllerFile controllerName="Thread">
           <actionMethod actionName="index"/>
@@ -172,6 +174,12 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Thread">
             <viewScriptFile forActionName="list"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Category">
+            <viewScriptFile forActionName="delete"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Category">
+            <viewScriptFile forActionName="edit"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>

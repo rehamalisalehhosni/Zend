@@ -1,4 +1,6 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Category</b> and script/action name <b>create</b></p>
-</div>
+<?php
+if($this->error){
+	echo "<div class='alert alert-danger'>".$this->error."</div>";
+}
+echo  $this->form;
+?>

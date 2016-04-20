@@ -1,4 +1,17 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Category</b> and script/action name <b>index</b></p>
-</div>
+<table class="table table-stripped">
+	<?php
+           foreach ($this->cats as $cat) {
+			  # var_dump($cat); exit();
+               ?>
+	      <tr>
+
+	        <td><?php echo $cat->getCategory_name() ?></td>
+	        <td><?php echo $cat->getCategory_description() ?></td>
+	        <td><a href="<?php echo $this->baseUrl()?>/category/edit/id/<?php echo $cat->getCategory_id() ?>">Edit</a></td>
+	        <td><a href="<?php echo $this->baseUrl()?>/category/delete/id/<?php echo $cat->getCategory_id() ?>">Delete</a></td>
+	     </tr>
+			<?php
+
+           }
+    ?>
+</table>
