@@ -1,6 +1,6 @@
 <br/>
         <?php
-           foreach ($this->cats->findMainCats() as $cat){
+           foreach ($this->cats->findMainCats() as $cat){  //main cat
             ?>
             <table class="table table-striped">
                 <thead>
@@ -9,7 +9,7 @@
                   </tr>
                 </thead>
                 <?php   
-                    foreach ($this->cats->findChildCategory($cat->getCategory_id()) as $child){
+                foreach ($this->cats->findChildCategory($cat->getCategory_id()) as $child){  //sub category
                         ?>
                         <tr>
                             <th colspan="6"><h3><?php  echo $child->getCategory_name();?><h3></th>
@@ -23,10 +23,10 @@
                             <td>post count</td>
                           </tr>
                       <?php  
-                    foreach ($this->thread->findByCat($child->getCategory_id()) as $thread){
+                    foreach ($this->thread->findByCat($child->getCategory_id()) as $thread){  //thread
                         ?>
                          <tr>
-                            <td><?php echo $thread->getThread_title(); ?></td>
+                            <td><a href="<?php echo $this->baseUrl()?>/thread/thread/id/<?php echo $thread->getThread_id(); ?>"><?php echo $thread->getThread_title(); ?></td>
                             <td><?php
                                  $data = substr($thread->getThread_body(), 0, 60);
                                  echo $data."... More";

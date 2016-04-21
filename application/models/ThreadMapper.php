@@ -94,6 +94,17 @@ class Application_Model_ThreadMapper
         return $entries;
     }
 
+    public function getThread($id)
+    {
+        $resultSet = $this->getDbTable()->fetchAll("thread_id=".$id);
+        $entries   = array();
+        foreach ($resultSet as $row) {
+            $entries[] = $this->_hydrate($row);
+        }
+ 
+        return $entries;
+    }
+
     public function findByCat($cat_id)
     {
         $resultSet = $this->getDbTable()->fetchAll("category_id = $cat_id");

@@ -3,7 +3,8 @@
 class ThreadController extends Zend_Controller_Action
 {
 
-   protected $auth;
+    protected $auth = null;
+
     public function init()
     {
         /* Initialize action controller here */
@@ -93,8 +94,21 @@ class ThreadController extends Zend_Controller_Action
         $this->view->threads = $mapper->fetchAll();
     }
 
+    public function threadAction()
+    {
+        // action body
+        //single page thread
+      $id = $this->getRequest()->getParam('id'); 
+        $mapper = new Application_Model_ThreadMapper();
+        $this->view->thread = $mapper->getThread($id);
+        //$this->view->replay = $mapper->getReply($id);
+
+    }
+
 
 }
+
+
 
 
 
