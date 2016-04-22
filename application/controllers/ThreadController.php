@@ -105,8 +105,22 @@ class ThreadController extends Zend_Controller_Action
 
     }
 
+    public function threadCategoryAction()
+    {
+      $id = $this->getRequest()->getParam('id'); 
+      $mapper = new Application_Model_ThreadMapper();
+      $this->view->threads = $mapper->getThread_category($id);   
+      $cat = new Application_Model_CategoryMapper();
+      $this->view->cat = $cat->find($id);
+      $this->view->Parcat = $cat->find($this->view->cat->getCategory_parent());
+        // action body
+
+    }
+
 
 }
+
+
 
 
 

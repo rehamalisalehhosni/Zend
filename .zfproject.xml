@@ -33,6 +33,7 @@
           <actionMethod actionName="edit"/>
           <actionMethod actionName="list"/>
           <actionMethod actionName="thread"/>
+          <actionMethod actionName="threadCategory"/>
         </controllerFile>
         <controllerFile controllerName="Message">
           <actionMethod actionName="index"/>
@@ -193,6 +194,9 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Thread">
             <viewScriptFile forActionName="thread"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Thread">
+            <viewScriptFile forActionName="threadCategory"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>

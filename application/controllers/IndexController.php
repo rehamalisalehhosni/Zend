@@ -28,7 +28,9 @@ class IndexController extends Zend_Controller_Action
         $this->view->cats = $mapper;
         $mapperthraed = new Application_Model_ThreadMapper();
         $this->view->thread = $mapperthraed;
-
+/*        $mapperReplay= new Application_Model_ThreadReplyMapper();
+        $this->view->threadreplay = $mapperReplay;
+*/
 
     }
 

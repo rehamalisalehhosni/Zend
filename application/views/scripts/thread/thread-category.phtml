@@ -1,20 +1,13 @@
 <br/>
-        <?php
-           foreach ($this->cats->findMainCats() as $cat){  //main cat
-            ?>
-            <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th colspan="6" class="mainCat"><h3><?php  echo $cat->getCategory_name() ?><h3></th>
-                  </tr>
-                </thead>
+<h3><?php  echo $this->Parcat->getCategory_name() ?></h3>
+           <table class="table table-striped">
+           		<tr>
+           			<th colspan="6" class="mainCat"><h3><?php  echo $this->cat->getCategory_name() ?><h3></th>
+        
+           		</tr>
                 <?php   
-                foreach ($this->cats->findChildCategory($cat->getCategory_id()) as $child){
                   //sub category
                         ?>
-                        <tr>
-                            <th colspan="6"><h3><a href="<?php echo $this->baseUrl()?>/thread/thread-Category/id/<?php echo $child->getCategory_id(); ?>"><?php  echo $child->getCategory_name();?></a><h3></th>
-                        </tr>
                         <tr>
                             <td>title</td>
                             <td>post</td>
@@ -23,7 +16,7 @@
                             <td>post count</td>
                           </tr>
                       <?php  
-                    foreach ($this->thread->findByCat($child->getCategory_id()) as $thread){  //thread
+                    foreach ($this->threads as $thread){  //thread
                         ?>
                          <tr>
                             <td><a href="<?php echo $this->baseUrl()?>/thread/thread/id/<?php echo $thread->getThread_id(); ?>"><?php echo $thread->getThread_title(); ?></td>
@@ -38,10 +31,8 @@
                         <?php           
                           }
                 ?>
-               <?php } ?>
                    </tbody>
                 </table>
             <?php
-        }
         ?>
 

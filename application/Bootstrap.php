@@ -45,6 +45,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $view->headScript()->prependFile($view->baseUrl().'/js/jquery-1.11.2.js');
             // Set the initial stylesheet:
         $view->headLink()->prependStylesheet($view->baseUrl().'/css/bootstrap.min.css');
+        $view->headLink()->prependStylesheet($view->baseUrl().'/css/bootstrap-theme.min.css');
         $view->headLink()->prependStylesheet($view->baseUrl().'/css/style.css');
             // Set the initial JS to load:
 
