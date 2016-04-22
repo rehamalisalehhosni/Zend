@@ -7,7 +7,7 @@ class UsersController extends Zend_Controller_Action
     public function init()
     {
         /* Initialize action controller here */
-        $auth = Zend_Auth::getInstance();
+        $this->auth = Zend_Auth::getInstance();
         if ($this->auth->hasIdentity()) {
                 $identity = $this->auth->getIdentity();
                 $this->view->user_name = $this->auth->getIdentity()->user_name;
