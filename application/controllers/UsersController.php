@@ -13,6 +13,7 @@ class UsersController extends Zend_Controller_Action
                 $this->view->user_name = $this->auth->getIdentity()->user_name;
                 $this->view->user_email= $this->auth->getIdentity()->user_email;
                 $this->view->user_type = $this->auth->getIdentity()->user_type;
+                $this->view->image = $auth->getIdentity()->image;
                 // Identity exists; get it
         }else{
                 $users = new Application_Model_DbTable_Users();

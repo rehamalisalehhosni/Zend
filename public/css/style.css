@@ -73,8 +73,8 @@ table-curved {
     border-radius: 0 0 6px 0;
 }
 .border{
-    border:solid 1px #ccc;
-    border-radius: 5px;
+/*    border:solid 1px #ccc;
+*/    border-radius: 5px;
     padding:5px;
     margin: 5px;
     list-style: none;
@@ -92,7 +92,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2bddd', end
 }html  h1,html h2,html h3{
     margin-top: 7px;
     margin-bottom: 7px;
-}.mainCat h3{
+}.mainCat h3{logo
     color: #675A5A;
 }body .btn-danger{
     background-color: #7B6D6D;
@@ -100,4 +100,27 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2bddd', end
 }.cat_im{
     width: 35px;
     height: 35px;
+    padding-left: 10px;
+}.logouser{
+    width: 50px;
+    height: 50px;
+    margin-right: 20px;
+    padding: 6px;
+}.name{
+    padding-top: 10px
+}.border li{
+    padding: 0px;
+    border-radius: 4px;
+    margin: 3px;
+    background: #CEBEBE;
+}.border li:nth-child(2),.border li:nth-child(3){
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+}.zend_form{
+    background: #CEBEBE;
+    border-radius: 5px;
+    padding: 3px;
+    margin: 10px;
+    
 }

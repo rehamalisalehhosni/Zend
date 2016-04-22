@@ -11,7 +11,8 @@ class AuthController extends Zend_Controller_Action
                 $this->view->user_name = $auth->getIdentity()->user_name;
                 $this->view->user_email = $auth->getIdentity()->user_email;
                 $this->view->user_type = $auth->getIdentity()->user_type;
-                // Identity exists; get it
+                $this->view->image = $auth->getIdentity()->image;
+               // Identity exists; get it
         }else{
                 $users = new Application_Model_DbTable_Users();
                 $form2 = new Application_Form_Login();

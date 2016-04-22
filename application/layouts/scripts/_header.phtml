@@ -4,12 +4,13 @@
                 <div class="logo pull-left">
                     <img src="<?php echo $this->baseUrl() ?>/img/o.png" alt="">
                 </div>
-                <div class="user_block pull-right">
+                <div class="user_block pull-right col-md-3">
                     <?php
                         if(!empty($this->user_name)){
                             echo"<ul class='border'>";
-                            echo"<li> UserName : " .$this->user_name."</li>";
-                            echo"<li> UserEmail : " .$this->user_email."</li>";
+                            echo"<li> <img src='".$this->baseUrl()."/upload/user_image/".$this->image."' class='logouser pull-left ' /><span class='pull-left name'>".$this->user_name."
+                              </span><p class='clearfix'></p></li>";
+//                            echo"<li> UserEmail : " .$this->user_email."</li>";
                            /* var_dump($this->user_type);exit();*/
                             if($this->user_type=="admin"){
                             echo"<li> <a href='".$this->baseUrl()."/admin'> admin Panel</a>";
