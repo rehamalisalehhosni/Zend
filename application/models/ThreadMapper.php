@@ -13,7 +13,8 @@ class Application_Model_ThreadMapper
              ->setThread_title($row->thread_title)
              ->setThread_id($row->thread_id)
              ->setThread_state_id($row->thread_state_id)
-             ->setOwner_id($row->owner_id);
+             ->setOwner_id($row->owner_id)
+             ->setViews($row->views);
         return $thread
         ;
     }
@@ -45,9 +46,9 @@ class Application_Model_ThreadMapper
     {
         $data = array(
             'date'       	=> $thread->getDate(),
-            'thread_body'    	=> $thread->getThread_body(),
-            'thread_title'        	=> $thread->getThread_title(),
-            'thread_id'         => $thread->getThread_id(),
+            'thread_body'   => $thread->getThread_body(),
+            'thread_title'  => $thread->getThread_title(),
+            'thread_id'     => $thread->getThread_id(),
             'thread_state_id'        	=> $thread->getThread_state_id(),
             'owner_id'        	=> $thread->getOwner_id()
         );

@@ -20,7 +20,6 @@
                             <td>post</td>
                             <td>views</td>
                             <td>replies count</td>
-                            <td>post count</td>
                           </tr>
                       <?php  
                     foreach ($this->thread->findByCat($child->getCategory_id()) as $thread){  //thread
@@ -31,9 +30,8 @@
                                  $data = substr($thread->getThread_body(), 0, 60);
                                  echo $data."... More";
                               ?></td>
-                            <td>views</td>
-                            <td>replies count</td>
-                            <td>post count</td>
+                            <td><?php  echo $thread->getViews() ?></td>
+                            <td> <?php echo $this->threadreplay->findReplyThread($thread->getThread_id()) ?></td>
                           </tr>
                         <?php           
                           }

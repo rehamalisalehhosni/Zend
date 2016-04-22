@@ -11,6 +11,7 @@ protected $_thread_title;
 protected $_thread_id;
 protected $_thread_state_id;
 protected $_owner_id;
+protected $_views;
 
 
 public function __construct(array $options = null)
@@ -46,9 +47,9 @@ public function __construct(array $options = null)
         return $this->_category_id;
     }
  
-	//************************************************************************************************
+    //************************************************************************************************
 
-	public function setDate($date)
+    public function setDate($date)
     {
         $this->_date = $date;
  
@@ -58,6 +59,20 @@ public function __construct(array $options = null)
     public function getDate()
     {
         return $this->_date;
+    }
+
+    //************************************************************************************************	
+
+	public function setViews($views)
+    {
+        $this->_views = $views;
+ 
+        return $this;
+    }
+ 
+    public function getViews()
+    {
+        return $this->_views;
     }
 
 	//************************************************************************************************

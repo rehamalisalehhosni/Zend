@@ -114,6 +114,9 @@ class ThreadController extends Zend_Controller_Action
       $this->view->cat = $cat->find($id);
       $this->view->Parcat = $cat->find($this->view->cat->getCategory_parent());
         // action body
+      $mapperReplay= new Application_Model_ThreadReplyMapper();
+      $this->view->threadreplay = $mapperReplay;
+
 
     }
 

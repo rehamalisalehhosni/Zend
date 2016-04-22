@@ -7,11 +7,11 @@ class Application_Model_ThreadReplyMapper
      protected function _hydrate($row)
     {
         $reply = new Application_Model_ThreadReply();
-        $reply->->setDate($row->Date)
-             ->setOwner_id($row->owner_id)
-             ->setReply_body($row->reply_body)
-             ->setReply_id($row->reply_id)
-             ->setThread_id($row->thread_id);
+        $reply->setDate($row->Date)
+              ->setOwner_id($row->owner_id)
+              ->setReply_body($row->reply_body)
+              ->setReply_id($row->reply_id)
+              ->setThread_id($row->thread_id);
         return $reply;
     }
 
@@ -98,6 +98,11 @@ class Application_Model_ThreadReplyMapper
             $entries[] = $this->_hydrate($row);
         }
         return $entries;
+    }
+    public function findReplyThread($thread_id)
+    {
+        $resultSet = $this->getDbTable()->fetchAll("thread_id = $thread_id");
+        return count($resultSet);
     }
 
 }
