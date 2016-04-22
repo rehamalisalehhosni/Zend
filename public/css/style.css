@@ -97,4 +97,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2bddd', end
 }body .btn-danger{
     background-color: #7B6D6D;
     border-color: #7B6D6D;
+}.cat_im{
+    width: 35px;
+    height: 35px;
 }

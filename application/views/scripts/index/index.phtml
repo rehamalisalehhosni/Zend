@@ -13,9 +13,20 @@
                   //sub category
                         ?>
                         <tr>
-                            <th colspan="6"><h3><a href="<?php echo $this->baseUrl()?>/thread/thread-Category/id/<?php echo $child->getCategory_id(); ?>"><?php  echo $child->getCategory_name();?></a><h3></th>
+                            <th colspan="6">
+                            <h3>
+                             <?php 
+                                if($child->getCategory_state()==0){
+                                  echo "<img src='".$this->baseUrl()."/img/lock.png' class='cat_im'/>" ;
+                                }else{
+                                  echo "<img src='".$this->baseUrl()."/img/open.png' class='cat_im'/>" ;
+
+                                }
+                             ?>
+                            <a href="<?php echo $this->baseUrl()?>/thread/thread-Category/id/<?php echo $child->getCategory_id(); ?>"><?php  echo $child->getCategory_name();?></a><h3></th>
                         </tr>
                         <tr>
+                            <td></td>
                             <td>title</td>
                             <td>post</td>
                             <td>views</td>
@@ -25,6 +36,17 @@
                     foreach ($this->thread->findByCat($child->getCategory_id()) as $thread){  //thread
                         ?>
                          <tr>
+                            <td>
+                              <?php
+                                  if($thread->getThread_state_id()==1){
+                                   echo "<img src='".$this->baseUrl()."/img/file.png' class='cat_im'/>" ;
+
+                                 }else{
+                                   echo "<img src='".$this->baseUrl()."/img/filelo.png' class='cat_im'/>" ;
+
+                                 }
+                              ?>
+                            </td>
                             <td><a href="<?php echo $this->baseUrl()?>/thread/thread/id/<?php echo $thread->getThread_id(); ?>"><?php echo $thread->getThread_title(); ?></td>
                             <td><?php
                                  $data = substr($thread->getThread_body(), 0, 60);
