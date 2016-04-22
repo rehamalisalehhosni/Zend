@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 21, 2016 at 12:02 AM
+-- Generation Time: Apr 22, 2016 at 06:27 AM
 -- Server version: 5.5.47-0ubuntu0.14.04.1
--- PHP Version: 5.6.20-1+deb.sury.org~trusty+1
+-- PHP Version: 5.5.9-1ubuntu4.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -29,11 +29,10 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `Category` (
   `category_id` int(11) NOT NULL AUTO_INCREMENT,
   `category_name` varchar(225) NOT NULL,
-  `category_state` tinyint(1) NOT NULL DEFAULT '1',
-  `category_parent` int(11) NOT NULL DEFAULT '0',
-  `category_description` tinytext NOT NULL,
+  `category_state` varchar(200) NOT NULL,
+  `parent` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`category_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -93,8 +92,18 @@ CREATE TABLE IF NOT EXISTS `Thread` (
   `owner_id` int(11) NOT NULL,
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `thread_title` varchar(255) NOT NULL,
+  `views` int(11) NOT NULL,
   PRIMARY KEY (`thread_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `Thread`
+--
+
+INSERT INTO `Thread` (`thread_id`, `category_id`, `thread_state_id`, `thread_body`, `owner_id`, `date`, `thread_title`, `views`) VALUES
+(2, 1, 1, 'kkkkkkkkkkkkkkkkkk', 1, '2016-04-19 10:27:54', 'ssssssssssssssssssssss', 0),
+(3, 0, 1, 'fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff', 1, '2016-04-18 22:00:00', 'gggggggggggggggggg', 0),
+(4, 0, 1, 'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk', 1, '2016-04-18 22:00:00', 'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr', 0);
 
 -- --------------------------------------------------------
 

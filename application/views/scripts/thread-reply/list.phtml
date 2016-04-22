@@ -1,4 +1,19 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>ThreadReply</b> and script/action name <b>list</b></p>
+<div class="container-fluid">
+<?php
+	 foreach ($this->replies as $reply){
+	?>
+<div class="row">
+	<div class="col-md-12">
+
+		<p>
+				<?php echo $reply->getReply_body() ?>
+		</p>
+		<p>
+			<a class="btn" href="<?php echo $this->baseUrl()?>/threadReply/list/">View Replies »</a>
+		</p>
+	</div>
+</div>
+<?php
+	}
+?>
 </div>

@@ -26,19 +26,19 @@ public function __construct(array $options = null)
                 $this->$method($value);
             }
         }
- 
+
         return $this;
     }
- 
+
     //************************************************************************************************
 
 	public function setDate($date)
     {
         $this->_date = $date;
- 
+
         return $this;
     }
- 
+
     public function getDate()
     {
         return $this->_date;
@@ -48,10 +48,10 @@ public function __construct(array $options = null)
 public function setOwner_id($owner_id)
     {
         $this->_owner_id = (int) $owner_id;
- 
+
         return $this;
     }
- 
+
     public function getOwner_id()
     {
         return $this->_owner_id;
@@ -64,10 +64,10 @@ public function setOwner_id($owner_id)
 	public function setReply_body($reply_body)
     {
         $this->_reply_body = (string) $reply_body;
- 
+
         return $this;
     }
- 
+
     public function getReply_body()
     {
         return $this->_reply_body;
@@ -78,10 +78,10 @@ public function setOwner_id($owner_id)
 public function setReply_id($reply_id)
     {
         $this->_reply_id = (int) $reply_id;
- 
+
         return $this;
     }
- 
+
     public function getReply_id()
     {
         return $this->_reply_id;
@@ -92,10 +92,10 @@ public function setReply_id($reply_id)
 public function setThread_id($thread_id)
     {
         $this->_thread_id = (int) $thread_id;
- 
+
         return $this;
     }
- 
+
     public function getThread_id()
     {
         return $this->_thread_id;
@@ -104,4 +104,3 @@ public function setThread_id($thread_id)
 
 
 }
-
