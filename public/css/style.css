@@ -123,4 +123,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2bddd', end
     padding: 3px;
     margin: 10px;
     
+}body .cat_im.stk{
+    width: 20px;
+    height: 20px;
 }

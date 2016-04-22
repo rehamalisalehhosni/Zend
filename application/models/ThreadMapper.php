@@ -13,6 +13,8 @@ class Application_Model_ThreadMapper
              ->setThread_title($row->thread_title)
              ->setThread_id($row->thread_id)
              ->setThread_state_id($row->thread_state_id)
+             ->setThread_sticky($row->thread_sticky)
+             ->setOwner_id($row->owner_id)
              ->setOwner_id($row->owner_id)
              ->setViews($row->views);
         return $thread
@@ -74,7 +76,12 @@ class Application_Model_ThreadMapper
     }
  public function getThread_category($id)
     {
-      $resultSet = $this->getDbTable()->fetchAll("category_id=".$id);
+        $select = $this->getDbTable()->select();
+        $select->where('category_id = ?', $id);
+        $select->order('thread_sticky DESC ');
+        $select->order('thread_id DESC');
+
+       $resultSet = $this->getDbTable()->fetchAll($select);
         $entries   = array();
         foreach ($resultSet as $row) {
             $entries[] = $this->_hydrate($row);
@@ -98,7 +105,11 @@ class Application_Model_ThreadMapper
  
     public function fetchAll()
     {
-        $resultSet = $this->getDbTable()->fetchAll();
+        $select = $this->getDbTable()->select();
+        $select->order('thread_sticky DESC ');
+        $select->order('thread_id DESC');
+
+        $resultSet = $this->getDbTable()->fetchAll($select);
         $entries   = array();
         foreach ($resultSet as $row) {
             $entries[] = $this->_hydrate($row);
@@ -120,7 +131,11 @@ class Application_Model_ThreadMapper
 
     public function findByCat($cat_id)
     {
-        $resultSet = $this->getDbTable()->fetchAll("category_id = $cat_id");
+        $select = $this->getDbTable()->select();
+        $select->where('category_id = ?', $cat_id);
+        $select->order('thread_id DESC');
+
+        $resultSet = $this->getDbTable()->fetchAll($select);
         $entries = array();
         foreach ($resultSet as $row) {
             $entries[] = $this->_hydrate($row);

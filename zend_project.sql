@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 22, 2016 at 07:28 PM
+-- Generation Time: Apr 22, 2016 at 09:39 PM
 -- Server version: 5.5.47-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.14
 
@@ -117,24 +117,25 @@ CREATE TABLE IF NOT EXISTS `Thread` (
   `thread_sticky` int(11) NOT NULL DEFAULT '0',
   `views` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`thread_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
 
 --
 -- Dumping data for table `Thread`
 --
 
 INSERT INTO `Thread` (`thread_id`, `category_id`, `thread_state_id`, `thread_body`, `owner_id`, `date`, `thread_title`, `thread_sticky`, `views`) VALUES
-(1, 2, 1, 'first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  ', 1, '2016-04-22 13:34:28', 'mypost', 0, 1),
-(2, 3, 1, 'toooo', 2, '2016-04-20 21:33:12', 'gggggg', 0, 1),
-(3, 2, 1, 'gggggg', 1, '2016-04-20 21:33:12', 'gggggg', 0, 1),
-(5, 2, 1, ' new Post  new Post  new Post  new Post   new Post  new Post  new Post  new Post  new Post  new Post   new Post  new Post  new Post  new Post  new Post  new Post   new Post  new Post  new Post  new Post  new Post  new Post   new Post  new Post ', 1, '2016-04-21 22:00:00', 'new Post', 0, 1),
-(6, 2, 1, ' new new  new new  new new  new new  new new  new new  new new  new new  new new', 1, '2016-04-21 22:00:00', 'new', 0, 1),
+(1, 3, 1, 'first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  first post  first post   first post  first post   first post  first post   first post  first post  ', 1, '2016-04-22 18:16:30', 'mypost 3', 1, 1),
+(2, 3, 1, 'vvvvvvvvvvvvvvvvvv', 1, '2016-04-22 18:18:33', 'gggggg', 1, 1),
+(3, 5, 1, 'gggggg', 1, '2016-04-20 21:33:12', 'gggggg', 0, 1),
+(5, 5, 1, ' new Post  new Post  new Post  new Post   new Post  new Post  new Post  new Post  new Post  new Post   new Post  new Post  new Post  new Post  new Post  new Post   new Post  new Post  new Post  new Post  new Post  new Post   new Post  new Post ', 1, '2016-04-21 22:00:00', 'new Post', 0, 1),
+(6, 6, 1, ' new new  new new  new new  new new  new new  new new  new new  new new  new new', 1, '2016-04-21 22:00:00', 'new', 0, 1),
 (7, 2, 1, 'my post  my post  my post  my post  my post  my post my post  my post \r\nmy post  my post  my post  my post  my post  my post my post  my post \r\nmy post  my post  my post  my post  my post  my post my post  my post \r\nmy post  my post  my post  my post  my post  my post my post  my post ', 2, '2016-04-22 13:47:27', 'my post', 1, 1),
 (9, 2, 1, 'new', 2, '2016-04-21 22:00:00', 'new', 0, 1),
 (10, 2, 1, 'new', 2, '2016-04-21 22:00:00', 'new', 0, 1),
 (13, 3, 1, 'new', 2, '2016-04-21 22:00:00', 'new', 0, 1),
-(14, 0, 1, 'sssssssssssssss', 2, '2016-04-22 15:35:33', 'new', 0, 1),
-(17, 2, 1, 'llllllllllllllllllllllll', 2, '2016-04-21 22:00:00', 'new', 0, 1);
+(14, 3, 0, 'sssssssssssssss', 2, '2016-04-22 15:35:33', 'new', 0, 1),
+(17, 2, 1, 'llllllllllllllllllllllll', 2, '2016-04-21 22:00:00', 'new', 0, 1),
+(18, 5, 1, 'magazine', 1, '2016-04-21 22:00:00', 'magazine', 1, 1);
 
 -- --------------------------------------------------------
 

@@ -109,7 +109,7 @@ class ThreadController extends Zend_Controller_Action
                         $data['thread_state_id']=1; //active thread non-blocked
                         $data['thread_sticky']=0; //active thread non-blocked
                      }
-
+                    $data['category_id']=  $threads->getCategory_id(); //from category session
                     $data['owner_id']=$this->auth ->getIdentity()->user_id;//from user session
 
                     $thread = new Application_Model_Thread($data);

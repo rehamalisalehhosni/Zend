@@ -44,11 +44,16 @@
 
                                  }else{
                                    echo "<img src='".$this->baseUrl()."/img/filelo.png' class='cat_im'/>" ;
-
                                  } 
                               ?>
                             </td>
-                            <td><a href="<?php echo $this->baseUrl()?>/thread/thread/id/<?php echo $thread->getThread_id(); ?>"><?php echo $thread->getThread_title(); ?></td>
+                            <td>
+                            <?php
+                                if($thread->getThread_sticky()==1){
+                                   echo "<img src='".$this->baseUrl()."/img/sticky.png' class='cat_im stk'/>" ;
+                                 }
+                            ?>
+                            <a href="<?php echo $this->baseUrl()?>/thread/thread/id/<?php echo $thread->getThread_id(); ?>"><?php echo $thread->getThread_title(); ?></td>
                             <td><?php
                                  $data = substr($thread->getThread_body(), 0, 60);
                                  echo $data."... More";
