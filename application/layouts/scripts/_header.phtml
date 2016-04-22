@@ -34,11 +34,13 @@
                 <ul class="nav navbar-nav">
 
                     <?php if( $this->user_type=="admin"){?>
-                        <li class="active"><a href="<?php echo $this->baseUrl() ?>">Site</a></li>
+                       <li class="active"><a href="<?php echo $this->baseUrl() ?>">Home</a></li>
+                       <li ><a href="<?php echo $this->baseUrl() ?>">Site</a></li>
                         <li><a href="<?php echo $this->baseUrl() ?>/Users/list">Users</a></li>
                         <li><a href="<?php echo $this->baseUrl() ?>/Category/">Categories</a></li>
                         <li><a href="<?php echo $this->baseUrl() ?>/Thread/">Threads</a></li>
                     <?php  }elseif (!empty( $this->user_type)){ ?>
+                        <li ><a href="<?php echo $this->baseUrl() ?>">Site</a></li>
                         <li><a href="<?php echo $this->baseUrl() ?>/users/edit-User/id/<?php echo $this->user_id?>">Profile</a></li>
 
                        <?php }else{ ?>
