@@ -32,6 +32,7 @@
           <actionMethod actionName="delete"/>
           <actionMethod actionName="edit"/>
           <actionMethod actionName="list"/>
+          <actionMethod actionName="thread"/>
         </controllerFile>
         <controllerFile controllerName="Message">
           <actionMethod actionName="index"/>
@@ -189,6 +190,9 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Message">
             <viewScriptFile forActionName="edit"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Thread">
+            <viewScriptFile forActionName="thread"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
