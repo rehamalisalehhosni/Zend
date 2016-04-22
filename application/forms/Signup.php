@@ -73,7 +73,12 @@ class Application_Form_Signup extends Zend_Form
                 'timeout' => 300,
             ),
         ));
-
+        $ban = new Zend_Form_Element_Radio('ban');
+        $ban->addMultiOptions(array('1'=>'yes', '0'=>'no'))
+                ->setRequired(true)
+                ->setLabel("ban");
+         $this->setDefault("ban",'no'); // Set default value for element
+         $this->addElement($ban);
         // Add the submit button
         $this->addElement('submit', 'submit', array(
             'ignore' => true,

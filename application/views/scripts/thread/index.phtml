@@ -1,4 +1,23 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Thread</b> and script/action name <b>index</b></p>
-</div>
+		<table class="table table-striped">
+    		<thead>
+      <tr>
+        <th>thread title</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+<?php
+     foreach ($this->threads as $thread){
+		?>
+      <tr>
+
+        <td><?php echo $thread->getThread_title()?></td>
+        <td><a href="<?php echo $this->baseUrl()?>/thread/edit/id/<?php echo $thread->getThread_id() ?>">Edit</a></td>
+        <td><a href="<?php echo $this->baseUrl()?>/thread/delete/id/<?php echo $thread->getThread_id()  ?>">Delete</a></td>
+     </tr>
+		<?php
+		}
+?>
+    </tbody>
+  </table>

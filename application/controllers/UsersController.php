@@ -38,6 +38,7 @@ class UsersController extends Zend_Controller_Action
                 // action body
         $form = new Application_Form_Signup();
         $request = $this->getRequest();
+        $form->removeElement('ban');
         if ($request->isPost()) {
             if ($form->isValid($request->getPost())) { 
                 $data = $this->getRequest()->getParams(); 
@@ -51,6 +52,7 @@ class UsersController extends Zend_Controller_Action
                 $data['registration_date']=date('Y-m-d');
                 $data['last_login_date']=date('Y-m-d');
                 $data['user_type']="user";
+                $data['ban']=0;
 
 /*                $form->getValues()['registration_date']=date('Y-m-d');
 */              $users = new Application_Model_Users($data);
@@ -89,6 +91,11 @@ class UsersController extends Zend_Controller_Action
         if($this->auth->getIdentity()->user_type=="admin"|| $this->auth->getIdentity()->user_id==$id ){
             $request = $this->getRequest();
             $form = new Application_Form_Signup();
+            if($this->auth->getIdentity()->user_type=="user"){
+                $form->removeElement('ban');
+                
+            }
+
             $mapper = new Application_Model_UsersMapper();
             $user=$mapper->find_array($id)[0];
     /*        $this->view->image=$data['image'];
@@ -100,15 +107,20 @@ class UsersController extends Zend_Controller_Action
                             print "Upload error";
                                //$data['image']=$user['image'];
                           }
-                          $data['image']=$form->image->getValue('name');
-                  /*   if(!$form->user_password){
-                        $data['user_password']=md5($data['user_password']);
-                     }else{
-                        $data['user_password']=md5($user['user_password']);
-                    } */
+                if($this->auth->getIdentity()->user_type=="user"){
+                    $data['ban']="0";
+                
+                }
+
+                   $data['image']=$form->image->getValue('name');
                     $data = $this->getRequest()->getParams();
-                    $data['user_password']=md5($data['user_password']);
-                    $data['image']=$form->image->getValue('name');
+                     if(empty($data['user_password'])) {
+                        $data['user_password']=$user['user_password'];
+                     }else{
+                        $data['user_password']=md5($data['user_password']);
+                    } 
+/*                    $data['user_password']=md5($data['user_password']);
+*/                    $data['image']=$form->image->getValue('name');
                     $data['registration_date']=$user['registration_date'];
                     $data['last_login_date']=$user['last_login_date'];
                     $data['user_type']=$user['user_type'];

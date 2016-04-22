@@ -19,12 +19,20 @@ class ErrorPageController extends Zend_Controller_Action
                 $this->view->form2 = $form2;
        }
     }
+
     public function indexAction()
     {
 
         // action body
     }
 
+    public function panAction()
+    {
+        // action body
+    }
+
 
 }
+
+
 

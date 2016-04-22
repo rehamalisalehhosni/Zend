@@ -12,6 +12,7 @@ class Application_Model_Users
     protected $_image;
     protected $_last_login_date;
     protected $_user_type;
+    protected $_ban;
 
     public function __construct(array $options = null)
     {
@@ -101,6 +102,17 @@ class Application_Model_Users
     public function getUser_type()
     {
         return $this->_user_type;
+    }
+    public function setBan($ban)
+    {
+        $this->_ban =  $ban;
+
+        return $this;
+    }
+
+    public function getBan()
+    {
+        return $this->_ban;
     }
     public function setGender($gender)
     {

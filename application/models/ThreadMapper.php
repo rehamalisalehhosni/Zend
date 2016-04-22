@@ -49,14 +49,16 @@ class Application_Model_ThreadMapper
             'thread_body'   => $thread->getThread_body(),
             'thread_title'  => $thread->getThread_title(),
             'thread_id'     => $thread->getThread_id(),
-            'thread_state_id'        	=> $thread->getThread_state_id(),
-            'owner_id'        	=> $thread->getOwner_id()
+            'category_id'     => $thread->getCategory_id(),
+            'thread_state_id'=> $thread->getThread_state_id(),
+            'thread_sticky'=> $thread->getThread_sticky(),
+            'owner_id'       => $thread->getOwner_id()
         );
         //<error possibility>
-        if (null === ($thread_id = $thread->getThread_id())) {
+        if (NULL === ($thread_id = $thread->getThread_id())) {
             $this->getDbTable()->insert($data);
         } else {
-            $this->getDbTable()->update($data, array('thread_id= ?' => $id));
+            $this->getDbTable()->update($data, array('thread_id= ?' => $thread_id));
         }
     }
  

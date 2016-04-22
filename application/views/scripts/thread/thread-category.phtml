@@ -1,6 +1,10 @@
 <br/>
 <h3><?php  echo $this->Parcat->getCategory_name() ?></h3>
+   <?php 
+       if($this->cat->getCategory_state()!=0){
+   ?>
     <a href="<?php echo $this->baseUrl() ?>/thread/add/id/<?php  echo $this->cat->getCategory_id() ?>" class="btn btn-danger pull-right">Add New Thtread</a>
+    <?php } ?>
           <p class="clearfix"></p>
            <table class="table table-striped">
            		<tr>

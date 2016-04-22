@@ -40,9 +40,9 @@ class AuthController extends Zend_Controller_Action
                 $data = $form->getValues();
                 $auth = Zend_Auth::getInstance();
     /*                $db =Zend_Db_Table::getDefaultAdapter();
-    */               $authAdapter = new Zend_Auth_Adapter_DbTable($users->getAdapter(), 'Users');
+    */          $authAdapter = new Zend_Auth_Adapter_DbTable($users->getAdapter(), 'Users');
                     //create the auth adapter
-                    $authAdapter->setIdentityColumn('user_email')->setCredentialColumn('user_password');
+                $authAdapter->setIdentityColumn('user_email')->setCredentialColumn('user_password');
                 $authAdapter->setIdentity($data['email'])->setCredential(md5($data['password']));
                 $result = $auth->authenticate($authAdapter);
                 if ($result->isValid()) {
@@ -54,7 +54,17 @@ class AuthController extends Zend_Controller_Action
                         unset($mysession->destination_url);
                         $this->_redirect($url);
                     }
-                    $this->_redirect('index/index');
+                    $this->auth = Zend_Auth::getInstance();
+                    $identity = $auth->getIdentity();
+                    if($this->auth->getIdentity()->ban==0){
+                      $this->_redirect('index/index');
+                    }else{
+                        $storage = new Zend_Auth_Storage_Session();
+                        $storage->clear();
+                        $this->_redirect('error-page/pan');
+                       
+                    }
+
                 } else {
                     $this->view->errorMessage = 'Invalid email or password. Please try again.';
                 }

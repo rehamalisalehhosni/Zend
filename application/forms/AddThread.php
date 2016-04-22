@@ -21,6 +21,16 @@ class Application_Form_AddThread extends Zend_Form
 		$thread_body->setAttrib("class","form-control");
 		$thread_body->setAttrib("placeholder","Enter ur Thread Body");
 
+        $state = new Zend_Form_Element_Radio('thread_state_id');
+        $state->addMultiOptions(array('1'=>'on', '0'=>'off'))
+                ->setRequired(true)
+                ->setLabel("State");
+         $this->setDefault("thread_state_id",'1'); // Set default value for element
+        $sticky = new Zend_Form_Element_Radio('thread_sticky');
+        $sticky->addMultiOptions(array('1'=>'on', '0'=>'off'))
+                ->setRequired(true)
+                ->setLabel("thread sticky"); // Set default value for element
+         $this->setDefault("thread_sticky",'0'); // Set default value for element
 
         /*$element = new Zend_Form_Element_File('image');
         $destination = APPLICATION_PATH.'/../public/upload/user_image';
@@ -40,7 +50,7 @@ class Application_Form_AddThread extends Zend_Form
 		$submit=new Zend_Form_Element_Submit("ADD");
 		$submit->setValue("Add Thread");
 
-		$this->addElements(array($thread_title,$thread_body,$submit ));
+		$this->addElements(array($thread_title,$thread_body,$state,$sticky,$submit));
     }
 
 

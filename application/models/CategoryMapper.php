@@ -67,6 +67,17 @@ class Application_Model_CategoryMapper
         $row = $result->current();
 
         return $this->_hydrate($row);
+    }   
+     public function categoryState($id)
+    {
+        $result = $this->getDbTable()->find($id);
+        if (0 == count($result)) {
+            return;
+        }
+        $row = $result->current();
+        $data= $this->_hydrate($row);
+
+        return $data->getCategory_state();
     }
 
     public function fetchAll()
@@ -83,6 +94,18 @@ class Application_Model_CategoryMapper
     {
         $select = $this->getDbTable()->select()
                        ->where('category_name'.' =?', $name);
+
+        $row = $this->getDbTable()->fetchRow($select);
+        if (is_null($row['category_id'])) {
+            return 0;
+        } else {
+            return $row->category_id;
+        }
+    }
+    public function categoryExistsId($id)
+    {
+        $select = $this->getDbTable()->select()
+                       ->where('category_id'.' =?', $id);
 
         $row = $this->getDbTable()->fetchRow($select);
         if (is_null($row['category_id'])) {

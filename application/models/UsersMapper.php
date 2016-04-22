@@ -12,6 +12,7 @@ class Application_Model_UsersMapper
              ->setUser_name($row->user_name)
              ->setRegistration_date($row->registration_date)
              ->setGender($row->gender)
+             ->setBan($row->ban)
              ->setCountry($row->country)
              ->setImage($row->image)
              ->setLast_login_date($row->last_login_date)
@@ -48,7 +49,8 @@ class Application_Model_UsersMapper
             'user_password'    	=> $user->getUser_password(),
             'user_name'        	=> $user->getUser_name(),
             'registration_date' => $user->getRegistration_date(),
-            'gender'        	=> $user->getGender(),
+            'gender'            => $user->getGender(),
+            'ban'        	    => $user->getBan(),
             'country'        	=> $user->getCountry(),
             'image'       		=> $user->getImage(),
             'last_login_date'   => $user->getLast_login_date(),

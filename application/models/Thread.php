@@ -12,6 +12,7 @@ protected $_thread_id;
 protected $_thread_state_id;
 protected $_owner_id;
 protected $_views;
+protected $_thread_sticky;
 
 
 public function __construct(array $options = null)
@@ -63,7 +64,7 @@ public function __construct(array $options = null)
 
     //************************************************************************************************	
 
-	public function setViews($views)
+    public function setViews($views)
     {
         $this->_views = $views;
  
@@ -73,6 +74,17 @@ public function __construct(array $options = null)
     public function getViews()
     {
         return $this->_views;
+    }
+	public function setThread_sticky($thread_sticky)
+    {
+        $this->_thread_sticky = $thread_sticky;
+ 
+        return $this;
+    }
+ 
+    public function getThread_sticky()
+    {
+        return $this->_thread_sticky;
     }
 
 	//************************************************************************************************
