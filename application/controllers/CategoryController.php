@@ -14,6 +14,7 @@ class CategoryController extends Zend_Controller_Action
                     $this->view->user_email = $auth->getIdentity()->user_email;
                     $this->view->user_type = $auth->getIdentity()->user_type;
                     $this->view->image = $auth->getIdentity()->image;
+                    $this->view->user_id = $auth->getIdentity()->user_id;
 
                     // Identity exists; get it
             }else{

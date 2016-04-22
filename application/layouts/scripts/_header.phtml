@@ -13,7 +13,7 @@
 //                            echo"<li> UserEmail : " .$this->user_email."</li>";
                            /* var_dump($this->user_type);exit();*/
                             if($this->user_type=="admin"){
-                            echo"<li> <a href='".$this->baseUrl()."/admin'> admin Panel</a>";
+                               echo"<li> <a href='".$this->baseUrl()."/admin'> admin Panel</a>";
 
                             }
 
@@ -38,7 +38,10 @@
                         <li><a href="<?php echo $this->baseUrl() ?>/Users/list">Users</a></li>
                         <li><a href="<?php echo $this->baseUrl() ?>/Category/">Categories</a></li>
                         <li><a href="<?php echo $this->baseUrl() ?>/Thread/">Threads</a></li>
-                    <?php  }else{ ?>
+                    <?php  }elseif (!empty( $this->user_type)){ ?>
+                        <li><a href="<?php echo $this->baseUrl() ?>/users/edit-User/id/<?php echo $this->user_id?>">Profile</a></li>
+
+                       <?php }else{ ?>
                         <li class="active"><a href="<?php echo $this->baseUrl() ?>">Home</a></li>
                     <?php  } ?>
                 </ul>

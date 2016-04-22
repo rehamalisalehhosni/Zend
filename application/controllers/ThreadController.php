@@ -15,6 +15,8 @@ class ThreadController extends Zend_Controller_Action
                 $this->view->user_email= $this->auth->getIdentity()->user_email;
                 $this->view->user_type = $this->auth->getIdentity()->user_type;
                 $this->view->image =  $this->auth->getIdentity()->image;
+                $this->view->user_id = $this->auth->getIdentity()->user_id;
+
                 // Identity exists; get it
         }else{
                 $users = new Application_Model_DbTable_Users();
