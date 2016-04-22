@@ -1,17 +1,36 @@
-<table class="table table-stripped">
-	<?php
-           foreach ($this->cats as $cat) {
-			  # var_dump($cat); exit();
-               ?>
-	      <tr>
+<table class="table table-striped">
+	<thead>
+      <tr>
+        <th>Category Name</th>
+        <th>Category Description</th>
+        <th>Category parent</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+    	
+		<?php
+	           foreach ($this->cats->fetchAll() as $cat) {
+				  # var_dump($cat); exit();
+	               ?>
+		      <tr>
 
-	        <td><?php echo $cat->getCategory_name() ?></td>
-	        <td><?php echo $cat->getCategory_description() ?></td>
-	        <td><a href="<?php echo $this->baseUrl()?>/category/edit/id/<?php echo $cat->getCategory_id() ?>">Edit</a></td>
-	        <td><a href="<?php echo $this->baseUrl()?>/category/delete/id/<?php echo $cat->getCategory_id() ?>">Delete</a></td>
-	     </tr>
-			<?php
+		        <td><?php echo $cat->getCategory_name() ?></td>
+		        <td><?php echo $cat->getCategory_description() ?></td>
+		        <td><?php 
+		         if($cat->getCategory_Parent()==0){
+		         	echo "Main";
+		         }else{
+		        	echo $this->cats->find($cat->getCategory_Parent())->getCategory_name() ;
+		         }
+		        ?></td>
+		        <td><a href="<?php echo $this->baseUrl()?>/category/edit/id/<?php echo $cat->getCategory_id() ?>">Edit</a></td>
+		        <td><a href="<?php echo $this->baseUrl()?>/category/delete/id/<?php echo $cat->getCategory_id() ?>">Delete</a></td>
+		     </tr>
+				<?php
 
-           }
-    ?>
+	           }
+	    ?>
+    </tbody>
 </table>

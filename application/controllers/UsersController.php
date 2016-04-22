@@ -20,6 +20,7 @@ class UsersController extends Zend_Controller_Action
                 $this->view->form2 = $form2;
 
         }
+
         /* Initialize action controller here */
 /*        $this->model=new Application_Model_DbTable_Users();
 */
@@ -71,8 +72,13 @@ class UsersController extends Zend_Controller_Action
 
     public function listAction()
     {
-        $mapper = new Application_Model_UsersMapper();
-        $this->view->users = $mapper->fetchAll();
+      if($this->auth->getIdentity()->user_type=="admin"){
+            $mapper = new Application_Model_UsersMapper();
+            $this->view->users = $mapper->fetchAll();
+        }else{
+            return $this->_redirect("/Error-Page/"); //idont know helper
+        }        
+
         // action body
     }
 
@@ -80,7 +86,7 @@ class UsersController extends Zend_Controller_Action
     {
         // action body
         $id = $this->getRequest()->getParam('id');      
-        if($this->auth->user_type=='administration'||$this->auth->user_id=$id){
+        if($this->auth->getIdentity()->user_type=="admin"|| $this->auth->getIdentity()->user_id==$id ){
             $request = $this->getRequest();
             $form = new Application_Form_Signup();
             $mapper = new Application_Model_UsersMapper();
@@ -115,19 +121,23 @@ class UsersController extends Zend_Controller_Action
             }         
             $this->view->form = $form; 
         }else{
-            return $this->_helper->redirector('errorPage'); //idont know helper
+            return $this->_redirect("/Error-Page/"); //idont know helper
         }        
     }
 
     public function deleteUserAction()
     {
         // action body
+        if($this->auth->getIdentity()->user_type=="admin" ){
    
         $users = new Application_Model_Users();
         $mapper = new Application_Model_UsersMapper();
         $id = $this->getRequest()->getParam('id');  
         $user=$mapper->remove($id);
         return $this->_helper->redirector('index'); //idont know helper
+        }else{
+            return $this->_redirect("/Error-Page/"); //idont know helper
+        } 
 
     }
 

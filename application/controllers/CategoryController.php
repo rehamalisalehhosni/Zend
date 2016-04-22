@@ -7,24 +7,28 @@ class CategoryController extends Zend_Controller_Action
     {
         /* Initialize action controller here */
         $auth = Zend_Auth::getInstance();
-        if ($auth->hasIdentity()) {
-                $identity = $auth->getIdentity();
-                $this->view->user_name = $auth->getIdentity()->user_name;
-                $this->view->user_email = $auth->getIdentity()->user_email;
-                $this->view->user_type = $auth->getIdentity()->user_type;
-                // Identity exists; get it
-        }else{
-                $users = new Application_Model_DbTable_Users();
-                $form2 = new Application_Form_Login();
-                $this->view->form2 = $form2;
+        if($auth->getIdentity()->user_type=="admin" ){
+            if ($auth->hasIdentity()) {
+                    $identity = $auth->getIdentity();
+                    $this->view->user_name = $auth->getIdentity()->user_name;
+                    $this->view->user_email = $auth->getIdentity()->user_email;
+                    $this->view->user_type = $auth->getIdentity()->user_type;
+                    // Identity exists; get it
+            }else{
+                    $users = new Application_Model_DbTable_Users();
+                    $form2 = new Application_Form_Login();
+                    $this->view->form2 = $form2;
 
-        }
+            }
+        }else{
+            return $this->_redirect("/Error-Page/"); //idont know helper
+        }    
     }
 
     public function indexAction()
     {
         $mapper = new Application_Model_CategoryMapper();
-        $this->view->cats = $mapper->fetchAll();
+        $this->view->cats = $mapper;
     }
 
     public function createAction()
@@ -33,6 +37,7 @@ class CategoryController extends Zend_Controller_Action
         $mapper = new Application_Model_CategoryMapper();
         $mainCats = $mapper->findMainCats();
         $parents = array();
+         $parents[0]="Main Category";         
         foreach ($mainCats as $cat) {
             $parents[$cat->getCategory_id()] = $cat->getCategory_name();
         }
@@ -76,6 +81,7 @@ class CategoryController extends Zend_Controller_Action
         $mainCats = $mapper->findMainCats();
         $parents = array();
         $form->populate($cat);
+         $parents[0]="Main Category";         
 
         foreach ($mainCats as $cat) {
             $parents[$cat->getCategory_id()] = $cat->getCategory_name();
