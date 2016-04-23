@@ -126,4 +126,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2bddd', end
 }body .cat_im.stk{
     width: 20px;
     height: 20px;
+}.user{
+    background: rgba(183, 168, 168, 0.56);
+}.tit{
+    color: #7B6D6D;
+    padding: 6px;
+}.bod{
+    background: #C0B1B1;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}.use{
+    position: relative;
+    top: 11px;
 }

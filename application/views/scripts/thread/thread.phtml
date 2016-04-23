@@ -6,22 +6,22 @@
 ?>
 <div class="row">
   <div class="col-md-12">
-<p>
+<div class="user">
   <?php
 $uid=$this->thread->getOwner_id();
 $uobj= $this->ownermapper->find($uid);
-echo $uobj->getUser_name();
 
 echo "<img src='".$this->baseUrl()."/upload/user_image/".$uobj->getImage()."' class='logouser pull-left ' /> ";
+echo "<div class='name pull-left'>".$uobj->getUser_name()."</div>";
 ?>
-
-</p>
-    <h2>
+<span class="clearfix"></span>
+</div>
+    <h2 class="tit">
         <?php echo $this->thread->getThread_title(); ?>
     </h2>
-    <p>
+    <div  class="bod">
         <?php echo $this->thread->getThread_body(); ?>
-    </p>
+    </div>
     <p>
 <?php
 if(  $this->user_id ==$this->thread->getOwner_id() || $this->user_type=="admin"){
@@ -38,16 +38,14 @@ if(  $this->user_id ==$this->thread->getOwner_id() || $this->user_type=="admin")
          if($this->user_id ==$reply->getOwner_id() || $this->user_type=="admin"){
             $rid=$reply->getReply_id();
       ?>
-      <p>
+      <div class="bod">
         <?php
 $uid=$reply->getOwner_id();
 $uobj= $this->ownermapper->find($uid);
-echo $uobj->getUser_name();
+echo "<span class='use'>".$uobj->getUser_name()."</span>";
 echo "<img src='".$this->baseUrl()."/upload/user_image/".$uobj->getImage()."' class='logouser pull-left ' /> ";
-
  ?>
-
-      </p>
+<p class="clear"></p>
       <p>
           <?php echo $reply->getReply_body() ?>
       </p>
@@ -56,6 +54,7 @@ echo "<img src='".$this->baseUrl()."/upload/user_image/".$uobj->getImage()."' cl
         <a class="btn btn-danger" href="<?php echo $this->baseUrl()?>/thread-reply/delete/id/<?php echo $rid; ?>">Delete reply »</a>
 
       </p>
+</div>
     <?php
       }
     }
