@@ -1,5 +1,51 @@
+<div class="container-fluid">
 <?php
 
-var_dump($this->thread);
+//var_dump($this->thread);
 
 ?>
+<div class="row">
+  <div class="col-md-12">
+    <h2>
+        <?php echo $this->thread->getThread_title(); ?>
+    </h2>
+    <p>
+        <?php echo $this->thread->getThread_body(); ?>
+    </p>
+    <p>
+<?php
+if(  $this->user_id ==$this->thread->getOwner_id() || $this->user_type=="admin"){
+  $tid=$this->thread->getThread_id();
+   ?>
+      <a class="btn btn-primary" href="<?php echo $this->baseUrl()?>/thread/edit/id/<?php echo $tid; ?>">Edit Thread »</a>
+      <a class="btn btn-danger" href="<?php echo $this->baseUrl()?>/thread/delete/id/<?php echo $tid; ?>">Delete Thread »</a>
+<?php
+}
+?>
+    </p>
+    <?php
+       foreach ($this->replies as $reply){
+         if($this->user_id ==$reply->getOwner_id() || $this->user_type=="admin"){
+            $rid=$reply->getReply_id();
+      ?>
+      <p>
+          <?php echo $reply->getReply_body() ?>
+      </p>
+      <p>
+        <a class="btn btn-primary" href="<?php echo $this->baseUrl()?>/thread-reply/edit/id/<?php echo $rid; ?>">Edit reply »</a>
+        <a class="btn btn-danger" href="<?php echo $this->baseUrl()?>/thread-reply/delete/id/<?php echo $rid; ?>">Delete reply »</a>
+
+      </p>
+    <?php
+      }
+    }
+      if($this->thread->getThread_state_id()==1){
+      echo  $this->f;
+    }else {
+      echo "this thread is locked";
+    }
+    ?>
+
+  </div>
+</div>
+</div>

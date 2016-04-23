@@ -7,7 +7,7 @@ class Application_Model_ThreadReplyMapper
      protected function _hydrate($row)
     {
         $reply = new Application_Model_ThreadReply();
-        $reply->setDate($row->Date)
+        $reply->setDate($row->date)
               ->setOwner_id($row->owner_id)
               ->setReply_body($row->reply_body)
               ->setReply_id($row->reply_id)
@@ -51,7 +51,7 @@ class Application_Model_ThreadReplyMapper
         if (null === ($reply_id = $reply->getReply_id())) {
             $this->getDbTable()->insert($data);
         } else {
-            $this->getDbTable()->update($data, array('reply_id= ?' => $id));
+            $this->getDbTable()->update($data, array('reply_id= ?' => $reply_id));
         }
     }
 
@@ -104,5 +104,13 @@ class Application_Model_ThreadReplyMapper
         $resultSet = $this->getDbTable()->fetchAll("thread_id = $thread_id");
         return count($resultSet);
     }
-
+    public function findReplies($thread_id)
+    {
+        $resultSet = $this->getDbTable()->fetchAll("thread_id = $thread_id");
+        $entries = array();
+        foreach ($resultSet as $row) {
+            $entries[] = $this->_hydrate($row);
+        }
+        return $entries;
+    }
 }

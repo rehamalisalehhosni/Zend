@@ -40,7 +40,7 @@ class ThreadController extends Zend_Controller_Action
     public function addAction()
     {
         // action body
-      $id = $this->getRequest()->getParam('id'); 
+      $id = $this->getRequest()->getParam('id');
       $cat_mapper = new Application_Model_CategoryMapper();
       //problem in other users
      if ($this->auth->hasIdentity()&&$cat_mapper->categoryExistsId($id)!=0&&$cat_mapper->categoryState($id)!=0) {
@@ -51,7 +51,7 @@ class ThreadController extends Zend_Controller_Action
                 $form->removeElement('thread_sticky');
             }
             if ($request->isPost()) {
-                if ($form->isValid($request->getPost())) {     
+                if ($form->isValid($request->getPost())) {
                     $data = $this->getRequest()->getParams();
                     $data['date']=date('Y-m-d');
                 if($this->auth->getIdentity()->user_type!="admin"){
@@ -64,9 +64,9 @@ class ThreadController extends Zend_Controller_Action
     */              $thread = new Application_Model_Thread($data);
                     $mapper = new Application_Model_ThreadMapper();
                     $mapper->save($thread);
-                    return $this->_redirect('/index/index');    
+                    return $this->_redirect('/index/index');
                 }
-            } 
+            }
             $this->view->form = $form;
         }else{
             return $this->_redirect("/Error-Page/"); //idont know helper
@@ -78,13 +78,13 @@ class ThreadController extends Zend_Controller_Action
         // action body
         $mapper = new Application_Model_ThreadMapper();
         $thread=$mapper->find_array($id)[0];
-       $id = $this->getRequest()->getParam('id'); 
+       $id = $this->getRequest()->getParam('id');
       if ($this->auth->hasIdentity()->user_id==$thread['user_id']||$this->auth->getIdentity()->user_type=="admin") {
             $thread=$mapper->remove($id);
-            return $this->_helper->redirector('delete');
+            return $this->_helper->redirector('index/index');
         }else{
             return $this->_redirect("/Error-Page/"); //idont know helper
-        } 
+        }
     }
     public function editAction()
     {
@@ -92,7 +92,7 @@ class ThreadController extends Zend_Controller_Action
         $request = $this->getRequest();
         $form = new Application_Form_AddThread();
         $mapper = new Application_Model_ThreadMapper();
-        $id = $this->getRequest()->getParam('id');      
+        $id = $this->getRequest()->getParam('id');
          $threads=$mapper->find($id);
       if ($this->auth->getIdentity()->user_id==$threads->getOwner_id()||$this->auth->getIdentity()->user_type=="admin") {
           $thread=$mapper->find_array($id)[0];
@@ -105,7 +105,7 @@ class ThreadController extends Zend_Controller_Action
             }
 
             if ($request->isPost()) {
-                if ($form->isValid($request->getPost())) {    
+                if ($form->isValid($request->getPost())) {
                     $data = $this->getRequest()->getParams();
                     if($this->auth->getIdentity()->user_type!="admin"){
                         $data['thread_state_id']=1; //active thread non-blocked
@@ -121,11 +121,11 @@ class ThreadController extends Zend_Controller_Action
                     return $this->_redirect("/index/index"); //idont know helper
                    // return $this->_helper->redirector('index'); //idont know helper
                 }
-            }         
-            $this->view->form = $form;   
+            }
+            $this->view->form = $form;
         }else{
             return $this->_redirect("/Error-Page/"); //idont know helper
-        } 
+        }
     }
 
     public function listAction()
@@ -139,18 +139,24 @@ class ThreadController extends Zend_Controller_Action
     {
         // action body
         //single page thread
-        $id = $this->getRequest()->getParam('id'); 
+        $id = $this->getRequest()->getParam('id');
         $mapper = new Application_Model_ThreadMapper();
-        $this->view->thread = $mapper->getThread($id);
-        //$this->view->replay = $mapper->getReply($id);
-
+        $this->view->thread = $mapper->find($id);
+        $mapper2 = new Application_Model_ThreadReplyMapper();
+        $this->view->replies = $mapper2->findReplies($id);
+        if ($this->auth->hasIdentity()) {
+$form = new Application_Form_AddReply();
+$form->setAction($this->view->baseUrl()."/thread-reply/add/id/$id");
+$this->view->f = $form;
+}
     }
+
 
     public function threadCategoryAction()
     {
-      $id = $this->getRequest()->getParam('id'); 
+      $id = $this->getRequest()->getParam('id');
       $mapper = new Application_Model_ThreadMapper();
-      $this->view->threads = $mapper->getThread_category($id);   
+      $this->view->threads = $mapper->getThread_category($id);
       $cat = new Application_Model_CategoryMapper();
       $this->view->cat = $cat->find($id);
       $this->view->Parcat = $cat->find($this->view->cat->getCategory_parent());
@@ -163,16 +169,3 @@ class ThreadController extends Zend_Controller_Action
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

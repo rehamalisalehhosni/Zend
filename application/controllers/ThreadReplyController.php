@@ -6,14 +6,14 @@ class ThreadReplyController extends Zend_Controller_Action
    public function init()
    {
        /* Initialize action controller here */
-        $auth = Zend_Auth::getInstance();
-        if ($auth->hasIdentity()) {
-                $identity = $auth->getIdentity();
-                $this->view->user_name = $auth->getIdentity()->user_name;
-                $this->view->user_email = $auth->getIdentity()->user_email;
-                $this->view->user_type = $auth->getIdentity()->user_type;
-                $this->view->image = $auth->getIdentity()->image;
-                $this->view->user_id = $auth->getIdentity()->user_id;
+        $this->auth = Zend_Auth::getInstance();
+        if ($this->auth->hasIdentity()) {
+                $identity = $this->auth->getIdentity();
+                $this->view->user_name = $this->auth->getIdentity()->user_name;
+                $this->view->user_email = $this->auth->getIdentity()->user_email;
+                $this->view->user_type = $this->auth->getIdentity()->user_type;
+                $this->view->image = $this->auth->getIdentity()->image;
+                $this->view->user_id = $this->auth->getIdentity()->user_id;
 
                 // Identity exists; get it
         }else{
@@ -40,12 +40,14 @@ class ThreadReplyController extends Zend_Controller_Action
 
                 $data = $this->getRequest()->getParams();
                 $data['date']=date('Y-m-d');
-                $data['thread_id']=1; //from category session
+                $data['thread_id']= $this->getRequest()->getParam('id');
                 $data['owner_id']=$this->auth ->getIdentity()->user_id;//from user session
                 $reply = new Application_Model_ThreadReply($data);
                 $mapper = new Application_Model_ThreadReplyMapper();
                 $mapper->save($reply);
-                return $this->_helper->redirector('index');
+              //  return $this->_helper->redirector('index');
+                return $this->_redirect("thread/thread/id/".$data['thread_id']);
+
             }
         }
         $this->view->form = $form;
@@ -57,8 +59,12 @@ class ThreadReplyController extends Zend_Controller_Action
          $reply = new Application_Model_ThreadReply();
          $mapper = new Application_Model_ThreadReplyMapper();
          $id = $this->getRequest()->getParam('id');
+
+         $data=$mapper->find($id);
          $reply=$mapper->remove($id);
-         return $this->_helper->redirector('delete');
+
+
+      return $this->_redirect("thread/thread/id/".$data->getThread_id());
     }
 
     public function editAction()
@@ -67,17 +73,24 @@ class ThreadReplyController extends Zend_Controller_Action
         $request = $this->getRequest();
         $id = $this->getRequest()->getParam('id');
         $form = new Application_Form_AddReply();
+
         $mapper = new Application_Model_ThreadReplyMapper();
         $reply=$mapper->find_array($id)[0];
 
         $form->populate($reply);
         if ($request->isPost()) {
+
             if ($form->isValid($request->getPost())) {
+                //var_dump("aaaaaa"); die();
                 $data = $this->getRequest()->getParams();
-                $thread = new Application_Model_Thread($data);
-                $mapper = new Application_Model_ThreadMapper();
-                $thread->setThread_id($id);
-                $mapper->save($thread);
+                $data['reply_id']=$reply['reply_id'];
+                $data['thread_id']=$reply['thread_id'];
+                $data['reply_id']=$reply['reply_id'];
+                $reply = new Application_Model_ThreadReply($data);
+                $mapper = new Application_Model_ThreadReplyMapper();
+                $reply->setReply_id($id);
+                $mapper->save($reply);
+                 return $this->_redirect("thread/thread/id/".$data['thread_id']);
             }
         }
         $this->view->form = $form;
