@@ -144,9 +144,8 @@ class ThreadController extends Zend_Controller_Action
         $this->view->thread = $mapper->find($id);
         $mapper2 = new Application_Model_ThreadReplyMapper();
         $this->view->replies = $mapper2->findReplies($id);
-        //$mapper3=new Application_Model_UsersMapper();
-        //$ownerid=
-        //$this->view->owner=$mapper3->find($id);
+        $mapper3=new Application_Model_UsersMapper();
+        $this->view->ownermapper=$mapper3;
         if ($this->auth->hasIdentity()) {
 $form = new Application_Form_AddReply();
 $form->setAction($this->view->baseUrl()."/thread-reply/add/id/$id");

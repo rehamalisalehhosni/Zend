@@ -6,6 +6,15 @@
 ?>
 <div class="row">
   <div class="col-md-12">
+<p>
+  <?php
+$uid=$this->thread->getOwner_id();
+$uobj= $this->ownermapper->find($uid);
+echo $uobj->getUser_name();
+?>
+<img src='".$this->baseUrl()."/upload/user_image/".<?php echo $uobj->getImage();?>."' class='logouser pull-left ' />
+
+</p>
     <h2>
         <?php echo $this->thread->getThread_title(); ?>
     </h2>
@@ -29,8 +38,12 @@ if(  $this->user_id ==$this->thread->getOwner_id() || $this->user_type=="admin")
             $rid=$reply->getReply_id();
       ?>
       <p>
-        <?php  //echo $this->owner->getUser_name(); ?>
-        <!-- <img src='".$this->baseUrl()."/upload/user_image/".<?php //echo $this->owner->getImage();?>."' class='logouser pull-left ' /> -->
+        <?php
+$uid=$reply->getOwner_id();
+$uobj= $this->ownermapper->find($uid);
+echo $uobj->getUser_name();
+ ?>
+        <img src='".$this->baseUrl()."/upload/user_image/".<?php echo $uobj->getImage();?>."' class='logouser pull-left ' />
 
       </p>
       <p>
