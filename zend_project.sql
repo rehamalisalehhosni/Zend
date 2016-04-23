@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 22, 2016 at 09:39 PM
+-- Generation Time: Apr 24, 2016 at 12:12 AM
 -- Server version: 5.5.47-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.14
 
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `ReplyThread` (
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `views` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`reply_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `ReplyThread`
@@ -85,7 +85,8 @@ CREATE TABLE IF NOT EXISTS `ReplyThread` (
 
 INSERT INTO `ReplyThread` (`reply_id`, `owner_id`, `thread_id`, `reply_body`, `date`, `views`) VALUES
 (1, 2, 1, 'hiiiiiiiiiii', '2016-04-20 20:34:19', 1),
-(2, 1, 1, 'welllcome', '2016-04-20 20:34:19', 1);
+(2, 1, 1, 'welllcome', '2016-04-20 20:34:19', 1),
+(3, 1, 7, 'kkkkk', '2016-04-22 22:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -175,7 +176,7 @@ CREATE TABLE IF NOT EXISTS `Users` (
 --
 
 INSERT INTO `Users` (`user_id`, `user_name`, `user_email`, `user_password`, `registration_date`, `gender`, `country`, `image`, `last_login_date`, `user_type`, `ban`) VALUES
-(1, 'admin', 'admin@gmail.com', '8ca6342915ac81dd2d3eec49e2098db9', '2016-04-15', 'female', '1', 'YOUNGS~1.GIF', '0000-00-00', 'admin', 0),
+(1, 'admin', 'admin@gmail.com', '8ca6342915ac81dd2d3eec49e2098db9', '2016-04-15', 'female', '1', 'YOUNGS~1.GIF', '0000-00-00', 'admin', 1),
 (2, 'bassem a', 'b@b.com', '8ca6342915ac81dd2d3eec49e2098db9', '2016-04-17', 'male', 'egypt', 'WILEY800 (2).JPG', '2016-04-17', 'user', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
