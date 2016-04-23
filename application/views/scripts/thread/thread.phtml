@@ -12,6 +12,7 @@ $uid=$this->thread->getOwner_id();
 $uobj= $this->ownermapper->find($uid);
 echo $uobj->getUser_name();
 
+echo "<img src='".$this->baseUrl()."/upload/user_image/".$uobj->getImage()."' class='logouser pull-left ' /> ";
 ?>
 
 </p>
@@ -42,12 +43,9 @@ if(  $this->user_id ==$this->thread->getOwner_id() || $this->user_type=="admin")
 $uid=$reply->getOwner_id();
 $uobj= $this->ownermapper->find($uid);
 echo $uobj->getUser_name();
+echo "<img src='".$this->baseUrl()."/upload/user_image/".$uobj->getImage()."' class='logouser pull-left ' /> ";
 
  ?>
-<<<<<<< HEAD
-        <img src='".<?php echo $this->baseUrl() ;?>."/upload/user_image/".<?php echo $uobj->getImage();?>."' class='logouser pull-left ' />
-=======
->>>>>>> 61eddd466f3f8a6dd4a1efb6a844a9b4da95e6b2
 
       </p>
       <p>
