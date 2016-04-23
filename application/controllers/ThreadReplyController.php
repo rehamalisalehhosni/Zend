@@ -33,6 +33,8 @@ class ThreadReplyController extends Zend_Controller_Action
     public function addAction()
     {
         // action body
+        if ($this->auth->hasIdentity()) {
+
         $form = new Application_Form_AddReply();
         $request = $this->getRequest();
         if ($request->isPost()) {
@@ -51,20 +53,32 @@ class ThreadReplyController extends Zend_Controller_Action
             }
         }
         $this->view->form = $form;
+      }else{
+          return $this->_redirect("/Error-Page/"); //idont know helper
+      }
+
     }
 
     public function deleteAction()
     {
         // action body
-         $reply = new Application_Model_ThreadReply();
-         $mapper = new Application_Model_ThreadReplyMapper();
-         $id = $this->getRequest()->getParam('id');
+        $reply = new Application_Model_ThreadReply();
+        $mapper = new Application_Model_ThreadReplyMapper();
+        $id = $this->getRequest()->getParam('id');
+
+        $reply=$mapper->find($id);
+        if ($this->auth->getIdentity()->user_id==$reply->getOwner_id()||$this->auth->getIdentity()->user_type=="admin") {
+
 
          $data=$mapper->find($id);
          $reply=$mapper->remove($id);
 
 
       return $this->_redirect("thread/thread/id/".$data->getThread_id());
+    }else{
+        return $this->_redirect("/Error-Page/"); //idont know helper
+    }
+
     }
 
     public function editAction()
@@ -76,6 +90,8 @@ class ThreadReplyController extends Zend_Controller_Action
 
         $mapper = new Application_Model_ThreadReplyMapper();
         $reply=$mapper->find_array($id)[0];
+        $replyd=$mapper->find($id);
+        if ($this->auth->getIdentity()->user_id==$replyd->getOwner_id()||$this->auth->getIdentity()->user_type=="admin") {
 
         $form->populate($reply);
         if ($request->isPost()) {
@@ -94,6 +110,10 @@ class ThreadReplyController extends Zend_Controller_Action
             }
         }
         $this->view->form = $form;
+      }else{
+          return $this->_redirect("/Error-Page/"); //idont know helper
+      }
+
     }
 
     public function listAction()
