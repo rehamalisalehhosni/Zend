@@ -22,7 +22,7 @@ echo "<div class='name pull-left'>".$uobj->getUser_name()."</div>";
     <div  class="bod">
         <?php echo $this->thread->getThread_body(); ?>
     </div>
-    <p>
+    <div>
 <?php
 if(  $this->user_id ==$this->thread->getOwner_id() || $this->user_type=="admin"){
   $tid=$this->thread->getThread_id();
@@ -32,7 +32,8 @@ if(  $this->user_id ==$this->thread->getOwner_id() || $this->user_type=="admin")
 <?php
 }
 ?>
-    </p>
+    </div>
+    <hr/>
     <?php
        foreach ($this->replies as $reply){
          if($this->user_id ==$reply->getOwner_id() || $this->user_type=="admin"){
