@@ -65,6 +65,13 @@ class UsersController extends Zend_Controller_Action
                    return $this->view->error="user already exists";    
                 }else{
                     $mapper->save($users);
+                    $mail = new Zend_Mail();
+                    $mail->setBodyText('thanks for you register'); 
+                    $mail->setBodyHtml('thanks for you register <b>Test</b> Text');
+                    $mail->setFrom('somebody@example.com', 'Some Sender');
+                    $mail->addTo($data['user_email'], 'Some Recipient');
+                    $mail->setSubject('welcome');
+                    $mail->send();
                     return $this->_helper->redirector('index');    
                     
                 }
